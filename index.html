@@ -1,11 +1,761 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=Nov_AI_2030.html">
-  <title>Novartis AI 2030</title>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-AGI en Novartis 2030</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--vivid-background:#fffff8;--dull-background:#f0f0f0;--dull-foreground:#666;--accent:#2a623d;--foreground:#111;--scenario-bg:#f5f3eb;--warm:#7a6a52;--warm-bg:#f7f3ed;--warm-tag:#a08b6d;--cool:#5a6b7a;--cool-bg:#eef1f5;--cool-tag:#6e8399}
+html{font-size:15px;scroll-behavior:smooth}
+body{background-color:var(--vivid-background);color:#111;font-family:'EB Garamond',Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;-webkit-font-smoothing:antialiased;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
+::selection{background:var(--accent);color:#fff}
+.main-grid{display:grid;grid-template-areas:"header header header" "toc content graph";grid-template-columns:100px minmax(0,740px) 400px;gap:0 24px;max-width:1340px;margin:0 auto;padding:0 16px}
+@media(max-width:1200px){.main-grid{grid-template-areas:"header" "content";grid-template-columns:1fr;max-width:740px}.toc-area,.graph-area{display:none!important}}
+nav.top-nav{grid-area:header;display:flex;flex-direction:column}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:32px}
+.nav-row h1{font-size:68px;font-weight:400;margin:0 0 1.5rem;line-height:1}
+.nav-row h1 a{text-decoration:none;color:inherit}
+.nav-links{display:flex;gap:28px;font-size:1.25rem;align-items:center;padding:8px 0}
+.nav-links a{text-decoration:none;color:inherit}.nav-links a:hover{text-decoration:underline}
+.nav-links .nav-bordered{border:1.5px solid #000;border-radius:6px;padding:4px 12px}
+.nav-dropdown{position:relative}.nav-dropdown:hover .nav-dd-menu{display:block}
+.nav-dd-menu{display:none;position:absolute;top:100%;right:0;width:200px;background:var(--vivid-background);border:1px solid #000;border-radius:6px;padding:8px 0;z-index:50;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.nav-dd-menu a{display:block;padding:8px 16px;font-family:-apple-system,system-ui,sans-serif;font-size:.85rem;text-decoration:none;color:inherit}
+.nav-dd-menu a:hover{background:var(--accent);color:#fff;text-decoration:none}.nav-dd-menu hr{border:0;height:0;border-top:1px solid #ddd;margin:0}
+.content-area{grid-area:content;padding-bottom:120px}
+.toc-area{grid-area:toc;padding-top:44px}
+.graph-area{grid-area:graph;padding-top:44px}
+h2{font-weight:400;line-height:1;margin-top:5rem;margin-bottom:2rem;font-size:2.2rem}h2:first-child{margin-top:0}
+h3{font-size:1.7rem;font-style:italic;font-weight:400;line-height:1;margin-top:2rem;margin-bottom:1.4rem}
+h4{font-size:1.5rem;font-style:italic;font-weight:400;line-height:1;margin-top:1.3rem;margin-bottom:1.1rem}
+p,summary{font-size:1.4rem;line-height:2rem}
+@media(max-width:730px){p,summary{font-size:1.25rem;line-height:1.45}}
+p{margin-top:1.4rem;margin-bottom:1.4rem}
+a{color:inherit;text-decoration:underline;text-decoration-skip-ink:auto;text-decoration-thickness:1.5px;text-underline-offset:1.5px}
+sup{font-size:.8em;vertical-align:super}sup a{color:var(--accent);text-decoration:none;font-size:.75rem}
+details{margin:8px 0;border:1.5px solid rgb(100,100,98);border-radius:8px;padding:4px 8px}
+details summary{cursor:pointer;font-weight:500;font-size:1rem;padding:6px 0;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details>div{padding:8px 0 4px;font-family:-apple-system,system-ui,sans-serif;font-size:.95rem;line-height:1.7;color:#444}
+details>div p{font-size:.95rem;line-height:1.7;margin:.6em 0;font-family:-apple-system,system-ui,sans-serif}
+.tbl-wrap{overflow-x:auto;margin:1.4rem 0;font-family:-apple-system,system-ui,sans-serif}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{text-align:left;padding:6px 8px;font-weight:600;border-bottom:2px solid #111;font-size:.72rem;text-transform:uppercase;letter-spacing:.03em}
+td{padding:6px 8px;border-bottom:1px solid #ddd;vertical-align:top}tr:hover{background:rgba(0,0,0,.015)}
+.hi{color:#16a34a;font-weight:600}.md{color:#b45309;font-weight:600}.lo{color:#dc2626;font-weight:600}
+.formula{font-family:'Courier New',monospace;font-size:.82rem;background:#f3f3f0;padding:14px 16px;border-radius:4px;margin:1rem 0;line-height:1.8;overflow-x:auto;color:#444}
+blockquote{font-size:1.4rem;margin:1.4rem 0;padding-left:1.5rem;border-left:3px solid var(--accent)}blockquote p{margin:.7rem 0}
+.mg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:32px 0;font-family:'Courier New',monospace}
+@media(max-width:640px){.mg{grid-template-columns:repeat(2,1fr)}}
+.m-box{padding:12px 16px;border-radius:6px;border:1px solid #000}.m-box.ac{background:var(--accent);color:#fff;border-color:var(--accent)}
+.m-box .ml{font-size:10px;text-transform:uppercase;margin-bottom:1px;opacity:.6}.m-box .mv{font-size:1.6rem;font-weight:700}.m-box .ms{font-size:10px;opacity:.5;margin-top:1px}
+.m-box.ac .ml,.m-box.ac .ms{color:rgba(255,255,255,.8)}
+.tab-boxes{margin-top:28px}.tbb{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.tbt{padding:4px 8px;font-family:'EB Garamond',Georgia,serif;border:1.5px solid #000;border-radius:6px;font-size:1.2rem;background:none;cursor:pointer;color:#111}.tbt:hover{background:rgba(0,0,0,.04)}.tbt.active{background:#111;color:var(--vivid-background)}
+.tp{padding:8px 0;font-family:-apple-system,system-ui,sans-serif;font-size:.95rem;line-height:1.7;display:none}.tp.active{display:block}.tp p{font-size:.95rem;line-height:1.7;margin:0 0 .8em;font-family:-apple-system,system-ui,sans-serif}
+.date-line{font-family:'Courier New',monospace;font-size:11px;text-transform:uppercase;color:var(--dull-foreground);margin:48px 0 -40px;display:flex;align-items:center;gap:8px;letter-spacing:.5px}
+.date-line a{color:var(--dull-foreground);text-decoration:none;opacity:.5}.date-line a:hover{opacity:1}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:1.4rem 0}@media(max-width:640px){.dual{grid-template-columns:1fr}}
+.dual-box{border:1px solid #ddd;padding:14px;border-radius:6px;font-family:-apple-system,system-ui,sans-serif;font-size:.88rem;line-height:1.55}.dual-box strong{display:block;margin-bottom:4px}
+.sens{margin:6px 0;display:flex;align-items:center;gap:8px}.sens-lbl{font-family:-apple-system,system-ui,sans-serif;font-size:.82rem;width:130px;text-align:right;flex-shrink:0;color:#555}
+.sens-track{flex:1;height:18px;background:#eee;border-radius:3px;overflow:hidden}.sens-fill{height:100%;border-radius:3px}.sens-val{font-family:'Courier New',monospace;font-size:.78rem;width:42px;font-weight:700}
+.verdict{border:2px solid #000;padding:2rem;margin:3rem 0;text-align:center}
+.verdict h3{font-style:normal;font-size:1.5rem;margin-bottom:.8rem}.verdict p{font-size:1.1rem;max-width:560px;margin:.8rem auto}
+/* Timeline sidebar — dynamic */
+.tl-nav{font-family:'EB Garamond',Georgia,serif;font-size:.85rem}
+.tl-track{display:flex;flex-direction:column;padding-left:0;position:relative;align-items:flex-end}
+.tl-track::before{content:'';position:absolute;right:5px;top:10px;bottom:10px;width:2px;background:#ccc}
+.tl-item{position:relative;padding:10px 22px 10px 0;text-decoration:none;color:#aaa;display:block;line-height:1;transition:color .3s;text-align:right;white-space:nowrap}
+.tl-item::before{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:11px;height:11px;border-radius:50%;border:2px solid #ccc;background:var(--vivid-background);z-index:1;transition:all .3s}
+.tl-item.past{color:#111}.tl-item.past::before{background:#111;border-color:#111}
+.tl-item.active{color:var(--accent);font-weight:700}.tl-item.active::before{background:var(--accent);border-color:var(--accent);width:13px;height:13px;right:-1px}
+.tl-item:hover span{text-decoration:underline}
+/* Choose buttons */
+.choose-box{display:flex;gap:16px;margin:2rem 0}
+.choose-btn{flex:1;padding:16px;border:2px solid #000;text-align:center;text-decoration:none;color:#111;font-size:1.4rem;font-weight:400;border-radius:6px;transition:all .15s;cursor:pointer;background:none;font-family:'EB Garamond',Georgia,serif}
+.choose-btn:hover{background:#111;color:var(--vivid-background);text-decoration:none}
+.choose-btn.warm{border-color:var(--warm);color:var(--warm)}.choose-btn.warm:hover{background:var(--warm);color:#fff}
+.choose-btn.warm.opened{background:var(--warm);color:#fff}
+.choose-btn.cool{border-color:var(--cool);color:var(--cool)}.choose-btn.cool:hover{background:var(--cool);color:#fff}
+.choose-btn.cool.opened{background:var(--cool);color:#fff}
+/* Scenario panels */
+.scenario-panel{max-height:0;overflow:hidden;transition:max-height .8s cubic-bezier(.4,0,.2,1);border-radius:0 0 8px 8px;margin-top:-8px}
+.scenario-panel.open{max-height:100000px}
+.scenario-panel.controlled{background:var(--warm-bg)}
+.scenario-panel.fasttakeoff{background:var(--cool-bg)}
+.scenario-inner{padding:2rem 0}
+.scenario-tag{display:inline-block;font-family:'Courier New',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:4px;background:var(--accent);color:#fff;margin-bottom:16px}
+.scenario-tag.warm{background:var(--warm-tag)}.scenario-tag.cool{background:var(--cool-tag)}
+.m-box.warm{background:var(--warm);color:#fff;border-color:var(--warm)}.m-box.warm .ml,.m-box.warm .ms{color:rgba(255,255,255,.75)}
+.m-box.cool{background:var(--cool);color:#fff;border-color:var(--cool)}.m-box.cool .ml,.m-box.cool .ms{color:rgba(255,255,255,.75)}
+.decision-intro{text-align:center;font-family:-apple-system,system-ui,sans-serif;font-size:.95rem;line-height:1.65;color:#555;max-width:580px;margin:0 auto 2rem;padding:0 1rem}
+.decision-date{display:inline-block;font-family:'Courier New',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;padding:6px 16px;border-radius:20px;border:1.5px solid #111;margin-bottom:16px;color:#111}
+/* Graph sidebar */
+.graph-inner{position:sticky;top:20px}
+.sb-date{font-family:'Courier New',monospace;font-size:.75rem;background:#000;color:#fff;display:inline-block;padding:3px 10px;border-radius:5px;margin-bottom:12px}
+.sb-section{margin-bottom:14px}.sb-lbl{font-family:'Courier New',monospace;font-size:10px;text-transform:uppercase;color:var(--dull-foreground);margin-bottom:3px}
+.sb-val{font-family:'Courier New',monospace;font-size:1.4rem;font-weight:700}.sb-sub{font-family:'Courier New',monospace;font-size:10px;color:var(--dull-foreground)}
+.sb-bar{display:flex;align-items:center;gap:5px;margin:2px 0}.sb-bar-lbl{font-family:'Courier New',monospace;font-size:10px;width:80px;text-align:right;flex-shrink:0}
+.sb-bar-track{flex:1;height:5px;background:#e8e8e4;border-radius:2px;overflow:hidden}.sb-bar-fill{height:100%;border-radius:2px;background:var(--accent)}
+.sb-hr{height:1px;background:#ddd;margin:12px 0}
+.sb-row{display:flex;gap:12px;font-family:'Courier New',monospace;font-size:10px}.sb-row-item{display:flex;flex-direction:column;gap:1px}.sb-row-item .v{font-size:.9rem;font-weight:700}
+/* Research cards */
+.page-section{max-width:780px;margin:0 auto;padding:0 24px 80px;display:none}
+.page-section.visible{display:block}
+.page-section h2:first-child{margin-top:2rem}
+.r-card{display:block;border:1.5px solid rgb(100,100,98);border-radius:10px;padding:28px 32px;margin:28px 0;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s;cursor:pointer}
+.r-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.06);text-decoration:none}
+.r-card h3{font-size:1.7rem;font-style:italic;font-weight:400;line-height:1.2;margin:0 0 .8rem}
+.r-card .r-desc{font-family:-apple-system,system-ui,sans-serif;font-size:.95rem;line-height:1.65;color:#444;margin-bottom:20px}
+.r-card .r-visual{width:100%;border-radius:6px;overflow:hidden;background:#f8f7f2;padding:20px;position:relative}
+.r-visual svg{width:100%;height:auto;display:block}
+.r-visual .wm{position:absolute;bottom:8px;right:12px;font-family:'Courier New',monospace;font-size:.7rem;color:#bbb}
+.mini-bars{display:flex;flex-direction:column;gap:4px}
+.mini-bar{display:flex;align-items:center;gap:6px}
+.mini-bar-lbl{font-family:'Courier New',monospace;font-size:10px;width:90px;text-align:right;flex-shrink:0;color:#666}
+.mini-bar-track{flex:1;height:8px;background:#e8e8e4;border-radius:2px;overflow:hidden}
+.mini-bar-fill{height:100%;border-radius:2px}
+.mini-tbl{width:100%;border-collapse:collapse;font-family:-apple-system,system-ui,sans-serif;font-size:.75rem}
+.mini-tbl th{text-align:left;padding:4px 6px;border-bottom:2px solid #111;font-weight:600;font-size:.68rem;text-transform:uppercase;letter-spacing:.03em}
+.mini-tbl td{padding:4px 6px;border-bottom:1px solid #ddd}
+.mini-tbl .hi{color:#16a34a;font-weight:600}.mini-tbl .md{color:#b45309;font-weight:600}
+.sc-row{display:flex;gap:12px;margin-top:12px}
+.sc-mini{flex:1;border:1.5px solid #000;border-radius:6px;padding:12px;text-align:center}
+.sc-mini .sc-label{font-family:'Courier New',monospace;font-size:10px;text-transform:uppercase;margin-bottom:4px;color:#666}
+.sc-mini .sc-val{font-family:'Courier New',monospace;font-size:1.3rem;font-weight:700}
+.sc-mini .sc-sub{font-family:'Courier New',monospace;font-size:10px;color:#999;margin-top:2px}
+.sc-mini.accent{border-color:var(--accent);background:var(--accent);color:#fff}.sc-mini.accent .sc-label,.sc-mini.accent .sc-sub{color:rgba(255,255,255,.7)}
+.sc-mini.cool{border-color:var(--cool);background:var(--cool);color:#fff}.sc-mini.cool .sc-label,.sc-mini.cool .sc-sub{color:rgba(255,255,255,.7)}
+/* About */
+.profile{display:flex;gap:24px;margin:2rem 0;align-items:flex-start}
+.profile-img{width:120px;height:120px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:3rem;font-weight:700;color:var(--accent);border:3px solid var(--accent);background:#eee}
+.profile-text{flex:1}
+.profile-text .name{font-size:1.6rem;font-weight:700;margin-bottom:.3rem}
+.profile-text .role{font-family:-apple-system,system-ui,sans-serif;font-size:.9rem;color:var(--dull-foreground);margin-bottom:.8rem}
+.profile-text p{font-size:1.2rem;line-height:1.8;margin:.6rem 0}
+.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:2rem 0}
+@media(max-width:640px){.model-grid{grid-template-columns:1fr}}
+.model-card{border:1.5px solid #000;border-radius:8px;padding:20px;text-align:center}
+.model-card .m-name{font-family:'Courier New',monospace;font-size:1rem;font-weight:700;margin-bottom:6px}
+.model-card .m-co{font-family:-apple-system,system-ui,sans-serif;font-size:.8rem;color:var(--dull-foreground);margin-bottom:8px}
+.model-card .m-role{font-family:-apple-system,system-ui,sans-serif;font-size:.82rem;line-height:1.5;color:#444}
+.contact-box{border:2px solid var(--accent);border-radius:8px;padding:24px;margin:2rem 0;text-align:center}
+.contact-box a{color:var(--accent);font-weight:600}
+/* Nav active state */
+.nav-links a.nav-active{font-weight:700;text-decoration:underline}
+/* Fixed sidebar with animated values */
+.sb-bar-fill{transition:width .6s cubic-bezier(.4,0,.2,1),background .4s ease}
+.sb-val-anim{transition:color .3s ease}
+.sb-date{transition:background .3s ease}
+footer.site-footer{max-width:1340px;margin:0 auto;padding:40px 16px 60px;border-top:1px solid #ddd;font-family:-apple-system,system-ui,sans-serif;font-size:.8rem;color:var(--dull-foreground);display:flex;justify-content:space-between}
+</style>
 </head>
 <body>
-  <p>Redirigiendo... <a href="Nov_AI_2030.html">Haz clic aquí si no se redirige automáticamente</a></p>
-</body>
-</html>
+<div class="main-grid">
+
+<!-- NAV -->
+<nav class="top-nav">
+<div class="nav-row">
+<h1><a href="Nov_AI_2030.html">Pre-AGI en Novartis 2030</a></h1>
+<div class="nav-links">
+<a href="Nov_AI_2030.html" style="font-weight:700">Summary</a>
+<div class="nav-dropdown"><a href="Nov_AI_2030_Research.html">Research</a>
+<div class="nav-dd-menu"><a href="#" href="#methodology">Methodology</a><hr><a href="#" href="#scenarios">Scenarios</a><hr><a href="#" href="#results">Results</a><hr><a href="#" href="#sensitivity">Sensitivity</a><hr><a href="#" href="#strategy">Strategy</a></div></div>
+<a href="Nov_AI_2030_About.html" class="nav-bordered">About</a>
+</div></div>
+<div style="margin-bottom:10px">
+<div style="font-family:'Courier New',monospace;font-size:11px;text-transform:uppercase;opacity:.5;margin-bottom:4px;letter-spacing:.5px">Marzo 14, 2026</div>
+<span style="letter-spacing:-1.2px;font-size:1.35rem">Reforecast integrado: AI&nbsp;2027 × Pipeline Novartis Américas ex-US, 2025–2030</span>
+</div>
+</nav>
+
+<!-- TIMELINE LEFT -->
+<div class="toc-area" style="padding-top:44px">
+<nav class="tl-nav" style="position:sticky;top:8px">
+<div class="tl-track" id="timeline">
+<a href="#summary" class="tl-item past" data-section="summary"><span>Mid 2025</span></a>
+<a href="#methodology" class="tl-item" data-section="methodology"><span>Late 2025</span></a>
+<a href="#baseline" class="tl-item" data-section="baseline"><span>2026</span></a>
+<a href="#scenarios" class="tl-item" data-section="scenarios"><span>Mid 2026</span></a>
+<a href="#results" class="tl-item" data-section="results"><span>Late 2026</span></a>
+<a href="#countries" class="tl-item" data-section="countries"><span>2027</span></a>
+<a href="#matrix" class="tl-item" data-section="matrix"><span>Mid 2027</span></a>
+<a href="#changes" class="tl-item" data-section="changes"><span>2028</span></a>
+<a href="#sensitivity" class="tl-item" data-section="sensitivity"><span>2029</span></a>
+<a href="#strategy" class="tl-item" data-section="strategy"><span>2030</span></a>
+<a href="#sc-nov2026" class="tl-item" data-section="sc-nov2026" style="display:none"><span>● Nov 2026</span></a>
+<a href="#sc-q1-2027" class="tl-item" data-section="sc-q1-2027" style="display:none"><span>● Q1 2027</span></a>
+<a href="#sc-mid2027" class="tl-item" data-section="sc-mid2027" style="display:none"><span>● Mid 2027</span></a>
+<a href="#sc-2028" class="tl-item" data-section="sc-2028" style="display:none"><span>● 2028</span></a>
+<a href="#sc-2029" class="tl-item" data-section="sc-2029" style="display:none"><span>● 2029</span></a>
+<a href="#sc-2030" class="tl-item" data-section="sc-2030" style="display:none"><span>● 2030</span></a>
+<a href="#ft-nov2026" class="tl-item" data-section="ft-nov2026" style="display:none"><span>◆ Nov 2026</span></a>
+<a href="#ft-q1-2027" class="tl-item" data-section="ft-q1-2027" style="display:none"><span>◆ Q1 2027</span></a>
+<a href="#ft-mid2027" class="tl-item" data-section="ft-mid2027" style="display:none"><span>◆ Mid 2027</span></a>
+<a href="#ft-2028" class="tl-item" data-section="ft-2028" style="display:none"><span>◆ 2028</span></a>
+<a href="#ft-2029" class="tl-item" data-section="ft-2029" style="display:none"><span>◆ 2029</span></a>
+<a href="#ft-2030" class="tl-item" data-section="ft-2030" style="display:none"><span>◆ 2030</span></a>
+</div>
+</nav>
+</div>
+
+<!-- ══════ CONTENT ══════ -->
+<section class="content-area">
+
+<div id="summary"></div>
+<p>Predecimos que el impacto de la inteligencia artificial sobre el pipeline de Novartis en América Latina y Canadá será material pero asimétrico: acelerará la segunda ola de lanzamientos, comprimirá tiempos documentales y regulatorios, pero no alterará la biología subyacente ni los cuellos de botella físicos.</p>
+
+<p>Escribimos este reforecast integrando las proyecciones de <a href="https://ai-2027.com">AI&nbsp;2027</a> —recalibradas contra METR y evidencia enterprise— con tres informes del pipeline regulatorio-comercial de Novartis. Monte Carlo de 20.000 iteraciones, 11 activos, 10 clusters-país, cuatro escenarios.</p>
+
+<div class="tab-boxes"><div class="tbb">
+<button class="tbt active" onclick="T(0)">Qué es esto</button><button class="tbt" onclick="T(1)">Cómo lo hicimos</button><button class="tbt" onclick="T(2)">Hallazgos clave</button><button class="tbt" onclick="T(3)">Quiénes somos</button>
+</div>
+<div class="tp active" id="tp0"><p>Este informe no es un forecast oficial de Novartis. Es una herramienta de decisión. Caso base: el <strong>índice de captura ponderada sube de 17.47 a 18.89 (+8.1%)</strong> y los lanzamientos esperados activo-país pasan de 29.66 a 32.34 (+2.69 antes de 2030).</p></div>
+<div class="tp" id="tp1"><p>Monte Carlo de 20.000 iteraciones. Capa clínica (BIO 2011-2020), capa local (filing, revisión, acceso), capa IA (ahorro tiempo + uplift), capa riesgo (ciber/compliance). AI 2027 como escenario alto, traducido a leverage operativa capturable.</p></div>
+<div class="tp" id="tp2"><p><strong>1)</strong> AI 2027 como escenario alto, no central. <strong>2)</strong> Canadá y Brasil capturadores principales. <strong>3)</strong> Mayores beneficiarios: ianalumab LN, inclisiran outcomes, remibrutinib MS. <strong>4)</strong> Acceso en BR/MX vale más que más IA.</p></div>
+<div class="tp" id="tp3"><p>Somos <strong>NCompany</strong>, consultora especializada en innovación corporativa y tecnología. <strong>Néstor Guerra</strong> ha usado los tres modelos frontera — <strong>Claude Opus 4.6</strong>, <strong>GPT-5.4 Pro</strong> y <strong>Gemini 3.1 Ultra Deep Think</strong> — para este trabajo. Basado en AI 2027 (Kokotajlo et al.), BIO 2011-2020, METR, RE-Bench, Novartis Annual Report 2025, fuentes regulatorias públicas y tres informes internos realizados por los modelos frontera.</p></div>
+</div>
+
+<div class="date-line" style="margin:48px 0 -40px"><span>Publicado Marzo 14, 2026</span><div style="width:1px;height:11px;background:#000;opacity:.3"></div><a href="#">PDF</a></div>
+
+<h2 id="methodology">Cierre 2025: Qué tomamos de AI 2027</h2>
+<p>AI 2027 plantea un escenario agresivo: un stock global de compute de IA que crece ~10× hasta diciembre de 2027, concentración del compute en pocas compañías, automatización intensa de la investigación y, condicionalmente a lograr un "superhuman coder" en marzo de 2027, una progresión rápida hacia ASI en 2028.</p>
+
+<p>Pero para llevar eso a Novartis no basta con repetir el escenario. Hay que pasar por un <strong>filtro de realidad operativa</strong>. METR deja claro que sus time-horizon tasks son autocontenidas y de bajo contexto; su RCT con desarrolladores open source mostró una ralentización del 19% con herramientas de 2025. En pharma, donde hay GxP, accountability firmada y compliance, la captura empresarial de valor va más lenta que la capability frontier.</p>
+
+<p>Hacemos dos movimientos: tratamos AI 2027 como escenario upside y convertimos las capacidades en "leverages operativos capturables", descontando GxP, validación, compliance y cuellos de botella físicos.</p>
+
+<details><summary>Lo que AI 2027 acierta y dónde se queda corto</summary><div>
+<p><strong>Acierta en:</strong> la dirección del cambio (más autonomía en coding, analytics, medical writing) y el foco en software-driven acceleration: los primeros impactos reales en pharma son velocidad de documentación, análisis y coordinación.</p>
+<p><strong>Se queda corto en:</strong> enterprise friction (GxP validation, firma responsable, control documental, auditoría), physical bottlenecks (radioligandos, supply, trazabilidad, centros autorizados, reembolso), y external validity para trabajo muy contextual (dossiers regulatorios, estrategia HTA, lanzamiento multinacional).</p>
+<p><strong>Nuestra conclusión:</strong> como marco para pensar en aceleración, AI 2027 es valioso. Como forecast literal de enterprise pharma antes de 2030, es demasiado agresivo. La forma correcta de usarlo es como límite superior disciplinado por evidencia y fricción sectorial.</p>
+</div></details>
+
+<div class="dual">
+<div class="dual-box"><strong style="color:var(--accent)">✓ Acierta en:</strong>Dirección del cambio: más autonomía en coding, analytics, medical writing. Foco en software-driven acceleration: velocidad de documentación, análisis y coordinación.</div>
+<div class="dual-box"><strong style="color:#dc2626">✗ Se queda corto en:</strong>Enterprise friction (GxP, firma responsable, auditoría). Physical bottlenecks (radioligandos, supply, trazabilidad). External validity para trabajo contextual (dossiers, HTA, launch multinacional).</div>
+</div>
+
+<div class="mg">
+<div class="m-box ac"><div class="ml">Caso base vs baseline</div><div class="mv">+8.1%</div><div class="ms">Captura ponderada</div></div>
+<div class="m-box ac"><div class="ml">Lanzamientos extra</div><div class="mv">+2.69</div><div class="ms">Activo-país antes 2030</div></div>
+<div class="m-box ac"><div class="ml">P media</div><div class="mv">29.4%</div><div class="ms">Lanzamiento local</div></div>
+<div class="m-box"><div class="ml">Monte Carlo</div><div class="mv">20K</div><div class="ms">Iteraciones</div></div>
+<div class="m-box"><div class="ml">Modelo</div><div class="mv">11×10</div><div class="ms">Activos × clusters</div></div>
+<div class="m-box"><div class="ml">Ventas región</div><div class="mv">$3.7B</div><div class="ms">América ex-US 2025</div></div>
+</div>
+
+<h2 id="baseline">Línea base Novartis 2025–2030</h2>
+<p>La foto regional de Novartis a cierre de 2025 es la de una compañía pure-play de innovación con foco en CRM, inmunología, neurociencia y oncología; ventas globales $54.5B (+8% cc), margen core 40.1% (alcanzado dos años antes de lo previsto), FCF $17.6B. En América ex-US ($3.675B, 6% del global, 3.933 FTEs), la visibilidad más sólida se concentra en Canadá, Brasil, Argentina, México y Colombia.</p>
+
+<p>Modelamos <strong>11 activos o franquicias</strong> relevantes para la ventana 2026–2030:</p>
+
+<div class="tbl-wrap"><table>
+<thead><tr><th>Activo</th><th>Área</th><th>Ventana</th><th>Elasticidad IA</th><th>Cuello de botella</th></tr></thead>
+<tbody>
+<tr><td><strong>Ianalumab — Sjögren</strong></td><td>Inmunología</td><td>P3+ / filing 2026</td><td class="hi">Alta</td><td>Aprobación + rollout</td></tr>
+<tr><td><strong>Ianalumab — LN</strong></td><td>Inmunología</td><td>P3 / 2028–30</td><td class="hi">Muy alta</td><td>Éxito clínico + acceso</td></tr>
+<tr><td><strong>Remibrutinib — MS</strong></td><td>Neuro/Inmuno</td><td>P3 / filing 2027</td><td class="hi">Alta</td><td>Éxito + adopción</td></tr>
+<tr><td><strong>Pelacarsen — Lp(a)</strong></td><td>CRM</td><td>P3 / filing 2026</td><td class="md">Media-alta</td><td>Readout + pagador</td></tr>
+<tr><td><strong>Inclisiran outcomes</strong></td><td>CRM</td><td>P3 / filing 2027</td><td class="hi">Alta</td><td>RWE + reembolso</td></tr>
+<tr><td><strong>Pelabresib</strong></td><td>Onco/Hemato</td><td>P3 / filing 2026</td><td class="md">Media</td><td>Éxito clínico</td></tr>
+<tr><td><strong>Pluvicto mHSPC</strong></td><td>Radioligand</td><td>Registration</td><td class="lo">Baja-media</td><td>Supply + centros</td></tr>
+<tr><td><strong>AAA817</strong></td><td>Radioligand</td><td>P3 / 2028+</td><td class="md">Media</td><td>Infra nuclear</td></tr>
+<tr><td><strong>Vanrafia</strong></td><td>CRM/Renal</td><td>Registration</td><td class="lo">Baja</td><td>Ya cerca mercado</td></tr>
+<tr><td><strong>Fabhalta</strong></td><td>Rare/Renal</td><td>P3+ / 2027–29</td><td class="md">Media</td><td>Extensiones</td></tr>
+<tr><td><strong>LXE408 Chagas</strong></td><td>Global health</td><td>P2 / 2030+</td><td class="hi">Muy alta</td><td>Riesgo fase II</td></tr>
+</tbody></table></div>
+
+<details><summary>Readiness regional: la posición de cada mercado</summary><div>
+<p><strong>Canadá</strong> (Tier 1, confianza muy alta): primera ola para casi todo; Priority Review 180 días, sistema HTA alineado. <strong>Brasil</strong> (ancla regional, alta): mayor palanca LATAM; ANVISA moderniza con eCTD 4.0 + RDC 945/2024 (90 días + aprobación tácita). <strong>México</strong> (prioritario, media-alta): Reliance Pathway abre puerta, pero acceso real sigue siendo el gate. <strong>Argentina</strong> (amplio portafolio, media-alta): buena amplitud innovadora; acceso puede ir por detrás del registro. <strong>Colombia</strong> (ola intermedia, media): base clínica fuerte, despliegue selectivo. <strong>Chile</strong> (ola intermedia, media): selectivo, no full first-wave. <strong>ACC+Andino</strong> (ola 2-3, media-baja): rollout selectivo. <strong>Venezuela</strong> (baja confianza): mínima visibilidad para la nueva ola.</p>
+</div></details>
+
+<h2 id="scenarios">Los cuatro escenarios del modelo integrado</h2>
+
+<p>El modelo Monte Carlo fusiona tres capas: (1) capa clínica con tasas BIO 2011-2020 ajustadas por señal positiva; (2) capa local con filing, revisión, acceso y fricción por país; (3) capa IA con ahorro de tiempo y uplift de probabilidad. La fórmula central:</p>
+
+<div class="formula">P(lanzamiento local &lt; 2030) = P(éxito global) × P(filing + acceso local) × P(aprobación + delay local − ahorro IA + retraso riesgo ≤ 2030)<br>
+Índice de captura ponderada = Σ [ peso estratégico activo × peso país × P(lanzamiento local antes de 2030) ]</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Escenario</th><th>Launches</th><th>Índice</th><th>Δ launches</th><th>Δ capture</th><th>P media</th></tr></thead>
+<tbody>
+<tr><td><strong style="color:var(--accent)">AI 2027 fast takeoff</strong></td><td>34.51</td><td>19.91</td><td>+4.86</td><td>+2.44</td><td>31.38%</td></tr>
+<tr><td><strong>Controlled acceleration</strong></td><td>32.34</td><td>18.89</td><td>+2.69</td><td>+1.42</td><td>29.40%</td></tr>
+<tr><td><strong style="color:#b45309">Governance drag</strong></td><td>29.81</td><td>17.59</td><td>+0.15</td><td>+0.11</td><td>27.10%</td></tr>
+<tr><td><strong style="color:var(--dull-foreground)">Baseline</strong></td><td>29.66</td><td>17.47</td><td>—</td><td>—</td><td>26.96%</td></tr>
+</tbody></table></div>
+
+<details><summary>Las tasas de éxito clínico que alimentan el modelo (BIO 2011-2020)</summary><div>
+<p>Fase II → Aprobación: <strong>17.2%</strong> (no-onco), <strong>10.8%</strong> (onco). Fase III → Aprobación: <strong>55.3%</strong> (no-onco), <strong>43.9%</strong> (onco). Registration → Aprobación: ~85-90% (no-onco), ~80-85% (onco). Ajustamos al alza activos con señal positiva de Fase III ya reportada (ianalumab Sjögren NEPTUNUS-1/-2, pelabresib MANIFEST-2, Pluvicto mHSPC).</p>
+</div></details>
+
+<h2 id="results">Resultados del reforecast: palanca por activos</h2>
+
+<p>El activo más beneficiado con diferencia es <strong>ianalumab en lupus nephritis</strong>. ¿Por qué? Porque está suficientemente avanzado como para que la calidad del execution, del analysis y del packaging regulatorio sí importe, y además tiene huella regional clara (NCT05126277 con centros en Canadá, México, Brasil, Argentina, Colombia, Guatemala). Después vienen inclisiran outcomes y remibrutinib MS. En cambio, Pluvicto y Vanrafia apenas cambian: uno frenado por física e infraestructura, el otro ya tan cerca del mercado que casi todo el valor incremental es marginal.</p>
+
+<div class="tbl-wrap"><table>
+<thead><tr><th>Activo</th><th>Δ capture (caso base)</th><th>Δ capture (AI 2027 fast)</th><th>Δ capture (drag)</th></tr></thead>
+<tbody>
+<tr><td><strong>Ianalumab — Lupus nephritis</strong></td><td class="hi">+0.41</td><td class="hi">+1.01</td><td>+0.06</td></tr>
+<tr><td><strong>Inclisiran / Leqvio — outcomes</strong></td><td class="md">+0.17</td><td class="md">+0.35</td><td>+0.01</td></tr>
+<tr><td><strong>Remibrutinib — MS</strong></td><td class="md">+0.14</td><td class="md">+0.35</td><td>+0.01</td></tr>
+<tr><td><strong>Fabhalta — franchise</strong></td><td>+0.08</td><td>+0.22</td><td>+0.01</td></tr>
+<tr><td><strong>AAA817 / 225Ac-PSMA-617</strong></td><td>+0.05</td><td>+0.20</td><td>+0.01</td></tr>
+<tr><td><strong>LXE408 — Chagas</strong></td><td>+0.01</td><td>+0.12</td><td>+0.00</td></tr>
+<tr><td><strong>Pelacarsen — Lp(a)</strong></td><td>+0.02</td><td>+0.09</td><td>−0.01</td></tr>
+<tr><td><strong>Pelabresib — Mielofibrosis</strong></td><td>−0.00</td><td>+0.06</td><td>−0.00</td></tr>
+</tbody></table></div>
+
+<h2 id="countries">Palanca por países</h2>
+<p>La captura adicional se concentra donde ya había readiness: <strong>Canadá y Brasil</strong> son los dos grandes receptores, seguidos por México y Argentina. Los mercados pequeños mejoran poco.</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>País / cluster</th><th>Δ capture (caso base)</th><th>Δ capture (AI 2027 fast)</th><th>Δ capture (drag)</th></tr></thead>
+<tbody>
+<tr><td><strong>Canadá</strong></td><td class="hi">+0.18</td><td class="hi">+0.49</td><td>+0.05</td></tr>
+<tr><td><strong>Brasil</strong></td><td class="hi">+0.19</td><td class="hi">+0.48</td><td>+0.03</td></tr>
+<tr><td><strong>México</strong></td><td class="md">+0.15</td><td class="md">+0.41</td><td>+0.02</td></tr>
+<tr><td><strong>Argentina</strong></td><td class="md">+0.15</td><td class="md">+0.39</td><td>+0.01</td></tr>
+<tr><td><strong>Colombia</strong></td><td>+0.09</td><td>+0.24</td><td>+0.02</td></tr>
+<tr><td><strong>Chile</strong></td><td>+0.06</td><td>+0.19</td><td>−0.00</td></tr>
+<tr><td><strong>ACC + Andino</strong></td><td>+0.03</td><td>+0.12</td><td>−0.00</td></tr>
+<tr><td><strong>Venezuela</strong></td><td>+0.00</td><td>+0.01</td><td>+0.00</td></tr>
+</tbody></table></div>
+
+<h2 id="matrix">Matriz de probabilidad ≤2030</h2>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Activo</th><th>CA</th><th>BR</th><th>MX</th><th>AR</th><th>CO</th><th>CL</th></tr></thead>
+<tbody>
+<tr><td><strong>Ianalumab Sjö</strong></td><td class="hi">66%</td><td class="hi">60%</td><td class="md">56%</td><td class="md">55%</td><td>46%</td><td>40%</td></tr>
+<tr><td><strong>Pelacarsen</strong></td><td class="md">58%</td><td class="md">51%</td><td>48%</td><td>46%</td><td>37%</td><td>37%</td></tr>
+<tr><td><strong>Remibrutinib</strong></td><td class="hi">61%</td><td>48%</td><td class="md">52%</td><td class="md">50%</td><td>35%</td><td>37%</td></tr>
+<tr><td><strong>Inclisiran</strong></td><td class="md">59%</td><td class="md">56%</td><td>47%</td><td class="md">50%</td><td>33%</td><td>37%</td></tr>
+<tr><td><strong>Pluvicto</strong></td><td class="hi">76%</td><td class="hi">65%</td><td class="md">51%</td><td class="md">55%</td><td>40%</td><td>41%</td></tr>
+<tr><td><strong>Ianalumab LN</strong></td><td class="md">51%</td><td>41%</td><td>34%</td><td>31%</td><td>21%</td><td>19%</td></tr>
+<tr><td><strong>AAA817</strong></td><td>12%</td><td>5%</td><td>3%</td><td>2%</td><td class="lo">1%</td><td class="lo">1%</td></tr>
+<tr><td><strong>LXE408 — Chagas</strong></td><td class="lo">2%</td><td class="lo">1%</td><td class="lo">1%</td><td class="lo">1%</td><td class="lo">0%</td><td class="lo">0%</td></tr>
+</tbody></table></div>
+
+<h4>Mediana de año de llegada (caso base)</h4>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Activo</th><th>Canadá</th><th>Brasil</th><th>México</th><th>Argentina</th><th>Colombia</th><th>Chile</th></tr></thead>
+<tbody>
+<tr><td><strong>Ianalumab Sjögren</strong></td><td>2027.5</td><td>2027.8</td><td>2027.9</td><td>2028.0</td><td>2028.2</td><td>2028.1</td></tr>
+<tr><td><strong>Pelacarsen</strong></td><td>2027.8</td><td>2028.1</td><td>2028.2</td><td>2028.3</td><td>2028.4</td><td>2028.4</td></tr>
+<tr><td><strong>Remibrutinib MS</strong></td><td>2028.4</td><td>2028.7</td><td>2028.8</td><td>2028.9</td><td>2029.0</td><td>2029.0</td></tr>
+<tr><td><strong>Inclisiran outcomes</strong></td><td>2028.5</td><td>2028.8</td><td>2029.0</td><td>2029.0</td><td>2029.1</td><td>2029.1</td></tr>
+<tr><td><strong>Pluvicto mHSPC</strong></td><td>2027.5</td><td>2027.8</td><td>2027.9</td><td>2027.9</td><td>2028.1</td><td>2028.1</td></tr>
+<tr><td><strong>Ianalumab LN</strong></td><td>2029.2</td><td>2029.4</td><td>2029.5</td><td>2029.5</td><td>2029.6</td><td>2029.5</td></tr>
+</tbody></table></div>
+
+<h2 id="changes">Lo que la IA sí cambia y lo que no</h2>
+<div class="dual">
+<div class="dual-box"><strong style="color:var(--accent)">✓ Sí cambia (alto impacto)</strong>Quality y velocidad de medical writing, protocol drafting, evidence synthesis, PV triage, dossier compilation, signal detection, HTA preparation y coordinación multijurisdicción.</div>
+<div class="dual-box"><strong style="color:#b45309">△ Cambia algo</strong>Selección de pacientes, priorización de centros, monitoring, limpieza y exploración de datos, documentación para variaciones y extensiones.</div>
+</div>
+<div class="dual">
+<div class="dual-box"><strong style="color:#dc2626">✗ Cambia poco antes de 2030</strong>Probabilidad biológica subyacente de un fase III ya diseñado, nuclear medicine network, fabricación radioligand, trazabilidad, aduanas y reembolso.</div>
+<div class="dual-box"><strong style="color:#7c3aed">⚠ Puede empeorar</strong>Superficie de ataque, exfiltración de datos, dependencia de vendors, compliance overhead y necesidad de documentar por qué el resultado del sistema era aceptable.</div>
+</div>
+
+<h2 id="sensitivity">Acceso vale más que IA incremental</h2>
+<p>La sensibilidad cuantitativa del modelo sale bastante clara: un <strong>10% extra de acceso en Brasil o México mueve más el índice de captura que un incremento equivalente de leverage de IA</strong>. Incluso el shock de ciber/compliance del caso base tiene impacto menor que la ejecución comercial-regulatoria. Esa es una conclusión estratégica potente: la IA importa, pero la organización y el acceso importan más.</p>
+
+<h4>Δ captura por +10% en cada palanca</h4>
+<div class="sens"><span class="sens-lbl">Acceso BR+MX</span><div class="sens-track"><div class="sens-fill" style="width:85%;background:var(--accent)"></div></div><span class="sens-val" style="color:var(--accent)">+2.8</span></div>
+<div class="sens"><span class="sens-lbl">IA leverage</span><div class="sens-track"><div class="sens-fill" style="width:42%;background:#111"></div></div><span class="sens-val">+1.4</span></div>
+<div class="sens"><span class="sens-lbl">Velocidad reg.</span><div class="sens-track"><div class="sens-fill" style="width:30%;background:#7c3aed"></div></div><span class="sens-val" style="color:#7c3aed">+1.0</span></div>
+<div class="sens"><span class="sens-lbl">Ciber drag</span><div class="sens-track"><div class="sens-fill" style="width:15%;background:#dc2626"></div></div><span class="sens-val" style="color:#dc2626">−0.5</span></div>
+
+<h2 id="strategy">Señales a monitorizar 2026–2028</h2>
+
+<div class="tbl-wrap"><table>
+<thead><tr><th>Señal</th><th>Pregunta clave</th><th>Si ocurre</th></tr></thead>
+<tbody>
+<tr><td><strong>METR / benchmarks realistas</strong></td><td>¿Siguen subiendo time horizons en tareas high-context?</td><td>Sube credibilidad del caso base/alto</td></tr>
+<tr><td><strong>Evidencia enterprise pharma</strong></td><td>¿Speed-up real en medical writing, PV, stats o dossiers?</td><td>Sube leverage capturable</td></tr>
+<tr><td><strong>Ianalumab filings/readouts</strong></td><td>¿Se confirman hitos Sjögren y avanza LN?</td><td>Se refuerza mayor palanca del modelo</td></tr>
+<tr><td><strong>México/Brasil acceso</strong></td><td>¿Reliance, ANVISA y reembolso reducen fricción real?</td><td>Mayor retorno que exprimir más IA</td></tr>
+<tr><td><strong>Radioligand network</strong></td><td>¿Se amplían centros, supply y capacidad nuclear?</td><td>Solo entonces Pluvicto/AAA817 capturan</td></tr>
+<tr><td><strong>Incidentes de seguridad</strong></td><td>¿Suben ataques a vendors, CROs, repositorios?</td><td>Reduce captura neta y aumenta overhead</td></tr>
+</tbody></table></div>
+
+<h2>Recomendaciones estratégicas</h2>
+
+<p>Si esto fuera un steering committee real, no intentaríamos "meter más IA" de forma difusa. Haríamos unas pocas jugadas concretas:</p>
+
+<p><strong>1)</strong> Poner una <strong>célula transversal para ianalumab LN, remibrutinib MS e inclisiran outcomes</strong>. Son los tres frentes donde más valor marginal captura la IA cuando se combina con buena ejecución.</p>
+
+<p><strong>2)</strong> Tratar <strong>Brasil y México como programa de acceso</strong>, no solo como mercados. En el caso base, mejorar acceso ahí mueve más que conseguir un poco más de capacidad IA.</p>
+
+<p><strong>3)</strong> Usar <strong>Canadá como "playbook factory"</strong>: lo que funcione ahí en dossier, HTA, medical y secuencia de lanzamiento debe empaquetarse y reutilizarse.</p>
+
+<p><strong>4)</strong> <strong>Separar claramente el plan de radioligandos</strong> del resto del portafolio. Pluvicto y AAA817 dependen de red nuclear, supply, importación y centros acreditados.</p>
+
+<p><strong>5)</strong> <strong>Subir el listón de seguridad</strong> alrededor de datos de ensayo, documentación regulatoria, vendors y CROs.</p>
+
+<details><summary>KPIs trimestrales mínimos</summary><div>
+<p>• Días ahorrados por activo en medical writing, stats, PV, CMC y dossier assembly.</p>
+<p>• Porcentaje de reutilización de módulos regulatorios y evidencia entre países.</p>
+<p>• Tiempo desde hito global hasta filing local y desde filing hasta primer acceso financiado.</p>
+<p>• Incidencias de seguridad/compliance por vendor, CRO, repositorio y entorno regulatorio.</p>
+</div></details>
+
+<div class="verdict"><h3>Veredicto final</h3>
+<p>AI 2027, pasado por el filtro de METR y por las fricciones reales de pharma, <strong>sí mueve el pipeline de Novartis antes de 2030</strong>, pero de una forma muy concreta.</p>
+<p>No convierte de repente a todos los activos en éxitos. Lo que hace es <strong>aumentar la captura de la segunda ola, acelerar documentación, ordenar el rollout y hacer más explotable la evidencia</strong>.</p>
+<p style="font-style:italic;color:var(--accent);margin-top:1rem">La IA es una palanca fuerte de tiempo y ejecución; el verdadero multiplicador sigue siendo acceso.</p>
+</div>
+
+<!-- ══════ CHOOSE SCENARIO ══════ -->
+<h2 style="text-align:center" id="about">Noviembre 2026: la bifurcación</h2>
+<div style="text-align:center"><span class="decision-date">Noviembre 2026</span></div>
+<p class="decision-intro">En noviembre de 2026, Novartis enfrenta una decisión estratégica que marcará los siguientes cuatro años. Las capacidades de IA han avanzado más rápido de lo previsto — el AI R&D multiplier está en ~2× y los primeros filings acelerados por IA ya se han completado. La primera ola (ianalumab Sjögren, pelacarsen, pelabresib) está en proceso regulatorio. Ahora: ¿cuánto gas se le da a la máquina?</p>
+
+<div class="choose-box">
+<button class="choose-btn warm" id="btn-controlled" onclick="toggleScenario('controlled')">Controlled Acceleration</button>
+<button class="choose-btn cool" id="btn-fasttakeoff" onclick="toggleScenario('fasttakeoff')">Fast Takeoff</button>
+</div>
+
+<!-- CONTROLLED ACCELERATION PANEL -->
+<div class="scenario-panel controlled" id="panel-controlled">
+<div class="scenario-inner">
+
+<div class="scenario-tag warm">Aceleración Controlada — P ≈ 50-55%</div>
+
+<p>Novartis opta por integrar la IA de forma validada y progresiva. Cada herramienta pasa por GxP, cada output se revisa, cada SOP se actualiza antes de ampliar el uso. El ritmo es deliberado: la IA avanza al 60-70% del ritmo que describe AI 2027. No se persigue el "superhuman coder" de marzo 2027 — se busca fiabilidad, trazabilidad, compliance. El resultado: un uplift sólido pero contenido. La empresa gana tiempo, reduce drug lag, y ensancha la captura de la segunda ola sin asumir riesgos excesivos.</p>
+
+<h2 id="sc-nov2026">Noviembre 2026: Decisión y punto de partida</h2>
+<p>La foto a noviembre de 2026 bajo aceleración controlada: los coding agents han mejorado, pero Novartis los trata como herramientas de soporte, no como co-pilotos autónomos. AI leverage capturable real: ~1.20×. La primera ola de filings (ianalumab Sjögren, pelacarsen, pelabresib) avanza en Canadá con Priority Review; Brasil y México en preparación secuencial.</p>
+<p>Los equipos usan IA para borradores de módulos CTD y exploración de datos, pero el flujo sigue siendo: <strong>IA genera → humano revisa → responsable firma</strong>. No hay atajos. Un paquete HTA para Canadá ahora tarda 2-3 meses con 2-3 personas (vs 3-4 meses con 4-5 personas sin IA). Mejora real pero incremental.</p>
+<p>Ianalumab (Sjögren) está en revisión regulatoria global. El equipo de Novartis Canadá prepara el dossier local. En controlled, el filing regional en Brasil y México se abordará cuando Canadá esté completo — secuencialmente, como se ha hecho siempre.</p>
+
+<div class="mg">
+<div class="m-box warm"><div class="ml">AI leverage capturable</div><div class="mv">1.20×</div><div class="ms">Pharma enterprise</div></div>
+<div class="m-box warm"><div class="ml">Filings primera ola</div><div class="mv">3</div><div class="ms">Sjögren · Pelac. · Pelab.</div></div>
+<div class="m-box"><div class="ml">Filing regional</div><div class="mv">Secuencial</div><div class="ms">CA → BR → MX</div></div>
+</div>
+
+<h2 id="sc-q1-2027">Q1 2027: La IA se formaliza en SOPs</h2>
+<p>AI 2027 describe marzo 2027 como el "Superhuman Coder" con multiplier 4×. En controlled acceleration, Novartis no llega ahí — pero sí ocurre algo significativo: los modelos de lenguaje son lo suficientemente buenos para que se integren formalmente en procedimientos operativos estándar.</p>
+<p>Cambio cualitativo: el Module 2.7 (Clinical Summary) tiene ahora un SOP que dice "Paso 3: generar borrador con sistema X. Paso 4: revisión experta. Paso 5: firma del médico responsable." El turnaround de un dossier regulatorio completo para filing local baja de 14-18 semanas a 9-12 semanas. Eso libera capacidad equivalente a 2-3 FTEs regulatorios por afiliada.</p>
+<p>Ianalumab (Sjögren) recibe aprobación global y aprobación canadiense. Drug lag hasta Canadá: ~6-8 meses desde aprobación global, vs 12-18 meses históricos. Filing activo en Brasil bajo eCTD 4.0. México prepara dossier.</p>
+<p>Pelacarsen y pelabresib avanzan en Canadá. Remibrutinib (MS) confirma filing 2027 tras readout positivo en abril 2026. Pharma leverage: ~1.30×.</p>
+
+<div class="mg">
+<div class="m-box warm"><div class="ml">AI 2027 multiplier</div><div class="mv">4.0×</div><div class="ms">Superhuman coder (frontera)</div></div>
+<div class="m-box warm"><div class="ml">Pharma leverage</div><div class="mv">1.30×</div><div class="ms">Controlled · Novartis</div></div>
+<div class="m-box"><div class="ml">Drug lag Sjögren (CA)</div><div class="mv">~7 mo</div><div class="ms">vs 14-18 mo histórico</div></div>
+</div>
+
+<h2 id="sc-mid2027">Mid 2027: Evidence generation y el gate de acceso</h2>
+<p>AI 2027 describe junio 2027 como "country of geniuses in a datacenter" con multiplier 10×. En pharma enterprise, lejos de eso. Pero la IA de 2027 sí cambia algo fundamental: la velocidad de evidence generation para acceso y reembolso.</p>
+<p>El cuello de botella crónico en LATAM no es aprobación regulatoria — es <strong>acceso y reembolso</strong>. La IA genera evidence packages personalizados para cada pagador, cada formulario, cada comisión evaluadora. Pero en controlled, el proceso sigue siendo humano-en-el-loop: cada claim del value dossier se verifica contra la base de evidencia original.</p>
+<p>Inclisiran avanza en outcomes (NCT06500443 en BR/AR). Remibrutinib (MS) entra en filing global. El drug lag promedio se sitúa en ~18-24 meses — mejor que los 36-42 históricos, pero lejos todavía de lo que podría ser con adopción más agresiva.</p>
+
+<h2 id="sc-2028">2028: IA × Pipeline convergen al máximo</h2>
+<p>En controlled acceleration, pharma leverage alcanza su techo en ~1.60-1.80×. Los modelos son extraordinariamente capaces, pero Novartis sigue procesando cada output a través de validación GxP completa.</p>
+<p><strong>Ianalumab en lupus nephritis</strong> — el activo más elástico a la IA — tiene su ventana de readout. Si positivo, la cascada de filing regional comienza. La IA marca diferencia real en este dossier complejo (endpoints compuestos, subgrupos étnicos): compresión del 25-35% en preparación regulatoria post-readout.</p>
+<p>Inclisiran outcomes completa evidencia. Value dossiers por país en semanas, no meses. Remibrutinib (MS) avanza en múltiples mercados. Pero el portfolio radioligando (Pluvicto, AAA817) sigue limitado por cuellos de botella físicos: centros nucleares, supply, importación. La IA no fabrica isótopos.</p>
+
+<div class="mg">
+<div class="m-box warm"><div class="ml">Pharma leverage</div><div class="mv">1.7×</div><div class="ms">Techo en controlled</div></div>
+<div class="m-box warm"><div class="ml">Drug lag promedio</div><div class="mv">~20 mo</div><div class="ms">vs 36-42 mo histórico</div></div>
+<div class="m-box"><div class="ml">Filings regionales</div><div class="mv">6-7</div><div class="ms">Primera + segunda ola</div></div>
+</div>
+
+<h2 id="sc-2029">2029: Acceso como multiplicador, no IA</h2>
+<p>El portfolio tiene 6-8 activos aprobados o en última fase de acceso en mercados principales, frente a 4-5 sin aceleración. El factor decisivo ya no es la IA sino el <strong>acceso efectivo</strong>. Un medicamento aprobado sin formulario del SUS (Brasil) o sin precio de referencia (México) no genera ventas.</p>
+<p>Análisis de sensibilidad: +10% acceso BR/MX mueve +2.8 puntos de captura; +10% IA mueve solo +1.4. La IA ha hecho su trabajo acelerando documentación y comprimiendo timelines. Ahora toca ejecutar comercialmente. Los equipos de Market Access llevan meses de preparación, pero la negociación de precios sigue siendo fundamentalmente humana y política.</p>
+<p>La tercera ola (AAA817, LXE408 Chagas) queda prácticamente fuera de alcance en controlled: los cuellos de botella físicos y la baja probabilidad de base no se compensan con una aceleración documental del 30-35%.</p>
+
+<h2 id="sc-2030">2030: Balance Controlled Acceleration</h2>
+
+<div class="tbl-wrap"><table>
+<thead><tr><th>Métrica</th><th>Baseline</th><th style="color:var(--warm)">Controlled Accel.</th><th>Δ</th></tr></thead>
+<tbody>
+<tr><td><strong>Índice captura</strong></td><td>17.47</td><td style="color:var(--warm);font-weight:700">18.89</td><td style="font-weight:600">+8.1%</td></tr>
+<tr><td><strong>Launches activo-país</strong></td><td>29.66</td><td style="color:var(--warm);font-weight:700">32.34</td><td style="font-weight:600">+2.69</td></tr>
+<tr><td><strong>P media lanzamiento</strong></td><td>26.96%</td><td style="color:var(--warm);font-weight:700">29.40%</td><td>+2.44pp</td></tr>
+<tr><td><strong>Drug lag promedio</strong></td><td>36-42 mo</td><td style="color:var(--warm);font-weight:700">20-28 mo</td><td>−12-16 mo</td></tr>
+<tr><td><strong>P>50% Canadá</strong></td><td>4-5</td><td>6-7</td><td>+2</td></tr>
+<tr><td><strong>P>50% Brasil</strong></td><td>2-3</td><td>3-5</td><td>+1-2</td></tr>
+<tr><td><strong>Américas ex-US revenue</strong></td><td>~$4-4.5B</td><td style="color:var(--warm);font-weight:700">~$5-5.5B</td><td>+$1-1B</td></tr>
+</tbody></table></div>
+
+<blockquote><p>La IA no reescribe el portfolio. Lo que hace es ensanchar el margen de captura de la segunda ola. Ese ensanchamiento, con 6-8 activos de alto valor en ventana 2026-2030, vale +2.69 lanzamientos activo-país adicionales. La tercera ola queda fuera de alcance. El verdadero multiplicador sigue siendo acceso.</p></blockquote>
+
+<details><summary>Riesgos principales de este escenario</summary><div>
+<p><strong>Riesgo competitivo:</strong> Si otros labs (Roche, AstraZeneca, Lilly) optan por fast takeoff y les funciona, Novartis queda con 12-18 meses de desventaja en time-to-market en mercados clave.</p>
+<p><strong>Riesgo de talento:</strong> Los mejores equipos de IA quieren trabajar en entornos que empujen los límites. Una adopción "prudente" puede dificultar la atracción de talento digital top.</p>
+<p><strong>Riesgo de infraestructura:</strong> Construir SOPs validados GxP es costoso y lento. Si hay que cambiar de estrategia en 2028, la inercia organizativa puede retrasar 6-12 meses adicionales.</p>
+</div></details>
+
+</div><!-- /scenario-inner -->
+</div><!-- /scenario-panel controlled -->
+
+<!-- FAST TAKEOFF PANEL -->
+<div class="scenario-panel fasttakeoff" id="panel-fasttakeoff">
+<div class="scenario-inner">
+
+<div class="scenario-tag cool">Fast Takeoff — P ≈ 15-20%</div>
+
+<p>Novartis apuesta fuerte. Adopción agresiva de la IA, con equipos dedicados a integrar cada nueva capacidad en semanas, no meses. Las validaciones GxP se paralelizan con el despliegue. Se acepta mayor riesgo regulatorio y de compliance a cambio de velocidad. Se sigue a AI 2027 al 80-100% de su ritmo. El ecosistema regulatorio también se mueve: agencias como Health Canada y ANVISA empiezan a usar IA internamente. El resultado: una compresión radical de timelines, la apertura de la tercera ola, y un drug lag que baja a 12-18 meses — pero con mayores riesgos de calidad, seguridad e incidentes de compliance.</p>
+
+<h2 id="ft-nov2026">Noviembre 2026: La apuesta y sus primeras señales</h2>
+<p>En fast takeoff, la decisión de noviembre se traduce en un programa acelerado: Novartis crea una <strong>unidad transversal de IA regulatoria</strong> con mandato para integrar modelos de lenguaje directamente en el proceso de filing, con validación GxP en paralelo (no secuencial). AI leverage capturable: ~1.35-1.40× — significativamente por encima del controlled (1.20×).</p>
+<p>La diferencia clave no es solo velocidad del filing individual — es la <strong>capacidad de hacer filings simultáneos en múltiples jurisdicciones</strong>. Un equipo regulatorio de 6 personas, con IA fast-track de noviembre 2026, puede mantener 3-4 filings simultáneos donde antes mantenía 1-2. Ianalumab Sjögren no se fila primero en Canadá y después en Brasil: se fila en los tres mercados principales <strong>en el mismo trimestre</strong>.</p>
+<p>Health Canada ya empieza a experimentar con herramientas de IA para acelerar su propia revisión de dossiers — algo que en controlled no ocurre hasta 2028.</p>
+
+<div class="mg">
+<div class="m-box cool"><div class="ml">AI leverage capturable</div><div class="mv">1.40×</div><div class="ms">Fast takeoff · Nov 2026</div></div>
+<div class="m-box cool"><div class="ml">Filing regional</div><div class="mv">Simultáneo</div><div class="ms">CA + BR + MX en paralelo</div></div>
+<div class="m-box"><div class="ml">Validación GxP</div><div class="mv">Paralela</div><div class="ms">Mayor riesgo aceptado</div></div>
+</div>
+
+<h2 id="ft-q1-2027">Q1 2027: El Superhuman Coder llega — y pharma lo nota</h2>
+<p>AI 2027 describe marzo 2027 como el punto de inflexión: Agent-3 con 200.000 copias, superhuman en coding, multiplier 4× acelerando a 10×. En fast takeoff pharma, esto se traduce en algo que no ocurre en controlled: <strong>la IA automatiza no solo documentación, sino estrategia de evidencia</strong>.</p>
+<p>Los equipos de Medical Affairs usan agentes que diseñan estrategias completas de generación de evidencia: qué datos recoger, de qué fuentes, en qué formato, para qué pagador específico. Esto era trabajo exclusivamente humano hasta ahora. El turnaround de un dossier regulatorio completo baja a 6-8 semanas (vs 9-12 en controlled).</p>
+<p>Ianalumab (Sjögren) recibe aprobación global y <strong>aprobación canadiense en el mismo trimestre</strong>. Drug lag hasta Canadá: ~3-4 meses (vs ~6-8 en controlled). Filing de ianalumab en Brasil ya avanzado — ANVISA lo procesa con pre-screening asistido por IA.</p>
+<p>Pero hay fricción: un dossier generado con IA para Argentina mezcla datos de dos estudios diferentes. Se detecta en revisión humana. Novartis refuerza controles — pero el incidente frena la adopción durante 4-6 semanas. El riesgo de velocidad se materializa por primera vez.</p>
+
+<div class="mg">
+<div class="m-box cool"><div class="ml">AI 2027 multiplier</div><div class="mv">4-10×</div><div class="ms">SC → Country of geniuses</div></div>
+<div class="m-box cool"><div class="ml">Pharma leverage</div><div class="mv">1.50×</div><div class="ms">Fast takeoff · Novartis</div></div>
+<div class="m-box"><div class="ml">Drug lag Sjögren (CA)</div><div class="mv">~4 mo</div><div class="ms">vs ~7 mo controlled</div></div>
+</div>
+
+<h2 id="ft-mid2027">Mid 2027: Las agencias regulatorias también usan IA</h2>
+<p>AI 2027 describe julio 2027 como el lanzamiento de Agent-3-mini al público. En pharma fast takeoff, el efecto transformador es que las <strong>agencias regulatorias adoptan IA para su propio trabajo</strong>. ANVISA implementa un sistema de pre-screening automatizado de dossiers. COFEPRIS usa IA para verificar consistencia de datos entre módulos CTD.</p>
+<p>Esto cambia la ecuación fundamentalmente. No solo Novartis prepara más rápido — la agencia procesa más rápido. El tiempo de revisión técnica en ANVISA baja un 30-40% (vs 15-20% en controlled). Health Canada ya opera con tiempos de revisión un 25% más cortos que su estándar.</p>
+<p>La segunda ola se activa 6-12 meses antes que en controlled. Inclisiran outcomes, remibrutinib MS, Pluvicto mHSPC: todos están 1-2 trimestres por delante en el pipeline regulatorio regional. Drug lag promedio: ~10-12 meses (vs ~18-24 en controlled).</p>
+<p>Pero el gobierno de EEUU endurece controles sobre IA tras el robo de Agent-2 por China. Novartis, como compañía suiza con operaciones globales, navega nuevas restricciones sobre qué herramientas usar en qué jurisdicciones. Compliance overhead sube materialmente.</p>
+
+<h2 id="ft-2028">2028: La segunda ola aterriza completa</h2>
+<p>AI 2027 describe capacidades entre "Superhuman AI Researcher" (multiplier 25-50×) y ASI. Para principios de 2028, las capacidades son extraordinarias. En fast takeoff pharma, la leverage capturable llega a 2.0-2.5× — un salto cualitativo respecto al controlled (1.60-1.80×).</p>
+<p><strong>Ianalumab LN readout positivo</strong> — y aquí la diferencia con controlled es dramática. En controlled, el dossier post-readout tarda 9-12 meses. En fast takeoff, <strong>4-6 meses</strong>. La IA de 2028 fast-track genera el ISS/ISE completo en 2-3 semanas (vs 6-8), prepara módulos CTD para 4 jurisdicciones en paralelo, crea value dossiers y paquetes HTA con coste-efectividad específico por país, y pre-chequea consistencia regulatoria antes del envío.</p>
+<p>El filing regional de ianalumab LN se inicia en Canadá, Brasil y México antes de que en controlled hubieran terminado siquiera el dossier global. Inclisiran outcomes: filing simultáneo en 5 mercados. Remibrutinib MS: aprobado en Canadá, bajo revisión en 3 mercados LATAM.</p>
+<p>El portfolio regional está <strong>12-18 meses más avanzado que en controlled</strong>.</p>
+
+<div class="mg">
+<div class="m-box cool"><div class="ml">Pharma leverage</div><div class="mv">2.5×</div><div class="ms">Máximo capturable</div></div>
+<div class="m-box cool"><div class="ml">Drug lag promedio</div><div class="mv">~12 mo</div><div class="ms">vs ~20 mo controlled</div></div>
+<div class="m-box"><div class="ml">Activos en filing</div><div class="mv">8-9</div><div class="ms">Primera + segunda + tercera ola</div></div>
+</div>
+
+<h2 id="ft-2029">2029: La tercera ola aparece</h2>
+<p>En controlled acceleration, solo la primera y segunda ola capturan valor significativo. En fast takeoff, <strong>la tercera ola empieza a materializarse</strong>.</p>
+<p>AAA817 (225Ac-PSMA) — que en controlled tenía 12% de probabilidad en Canadá y 5% en Brasil — sube a 20-25% y 10-15%. La IA ha mejorado trial design, site selection, patient recruitment y data management. Pero el cuello de botella nuclear persiste: centros, supply, importación.</p>
+<p>LXE408 (Chagas) — el activo más elástico a IA en términos relativos — se beneficia. Los avances permiten un diseño de trial adaptativo que acelera Fase II. Probabilidad de llegar a algún mercado antes de 2030: sube a 8-12% en Brasil (vs <2% en controlled).</p>
+<p>El acceso sigue siendo el gate, igual que en controlled. Pero los equipos de Market Access llevan 12-18 meses de ventaja en preparación de evidence packages, lo que se traduce en negociaciones de reembolso más avanzadas.</p>
+<p>Sin embargo, los <strong>riesgos de seguridad y compliance son materialmente mayores</strong>. Más incidentes de calidad en dossiers, más vulnerabilidades en datos de ensayo, más overhead de compliance para documentar cada output de IA. El modelo estima que el "drag" de seguridad reduce el upside neto en un 15-20%.</p>
+
+<h2 id="ft-2030">2030: Balance Fast Takeoff</h2>
+
+<div class="tbl-wrap"><table>
+<thead><tr><th>Métrica</th><th>Baseline</th><th style="color:var(--warm)">Controlled</th><th style="color:var(--cool)">Fast Takeoff</th><th>Δ FT vs baseline</th></tr></thead>
+<tbody>
+<tr><td><strong>Índice captura</strong></td><td>17.47</td><td>18.89</td><td style="color:var(--cool);font-weight:700">19.91</td><td style="font-weight:600">+14.0%</td></tr>
+<tr><td><strong>Launches activo-país</strong></td><td>29.66</td><td>32.34</td><td style="color:var(--cool);font-weight:700">34.51</td><td style="font-weight:600">+4.86</td></tr>
+<tr><td><strong>P media lanzamiento</strong></td><td>26.96%</td><td>29.40%</td><td style="color:var(--cool);font-weight:700">31.38%</td><td>+4.42pp</td></tr>
+<tr><td><strong>Drug lag promedio</strong></td><td>36-42 mo</td><td>20-28 mo</td><td style="color:var(--cool);font-weight:700">12-18 mo</td><td style="font-weight:600">−20-24 mo</td></tr>
+<tr><td><strong>P>50% Canadá</strong></td><td>4-5</td><td>6-7</td><td style="color:var(--cool);font-weight:700">8-10</td><td>+4-5</td></tr>
+<tr><td><strong>P>50% Brasil</strong></td><td>2-3</td><td>3-5</td><td style="color:var(--cool);font-weight:700">5-7</td><td>+3-4</td></tr>
+<tr><td><strong>Américas ex-US revenue</strong></td><td>~$4-4.5B</td><td>~$5-5.5B</td><td style="color:var(--cool);font-weight:700">~$6-7B</td><td>+$2-2.5B</td></tr>
+</tbody></table></div>
+
+<p>Los ganadores adicionales vs controlled: <strong>AAA817</strong> que pasa de casi imposible a posible en Canadá, <strong>Fabhalta franchise</strong> que captura extensiones 6-12 meses antes, y <strong>LXE408 Chagas</strong> que emerge como posibilidad real en Brasil.</p>
+
+<blockquote><p>Si controlled acceleration ensancha la captura de la segunda ola, fast takeoff la ensancha <em>y</em> abre la tercera. El portfolio pasa de +2.69 a +4.86 lanzamientos activo-país — casi el doble. Pero la incertidumbre también se duplica. Y el verdadero multiplicador sigue siendo acceso: en fast takeoff, la ventaja de IA se traduce en llegar al gate de acceso 12-18 meses antes. Cruzar ese gate sigue requiriendo negociación, presupuesto e infraestructura.</p></blockquote>
+
+<details><summary>Comparativa Controlled vs Fast Takeoff por activo estrella</summary><div>
+<p><strong>Ianalumab LN:</strong> Δ capture +0.41 (controlled) vs +1.01 (fast). La diferencia (+0.60) viene de filing 4-6 meses más rápido + probabilidad ligeramente mayor por mejor trial execution.</p>
+<p><strong>Inclisiran outcomes:</strong> +0.17 vs +0.35. Diferencia por evidence generation acelerada + acceso 6-12 meses antes.</p>
+<p><strong>Remibrutinib MS:</strong> +0.14 vs +0.35. Dossier MS complejo donde la IA fast takeoff marca diferencia real en calidad y velocidad del analysis package.</p>
+<p><strong>AAA817:</strong> +0.05 vs +0.20. La mayor diferencia relativa — en fast takeoff, la IA ayuda con trial design y regulatory strategy, no solo documentación. Pero el cuello de botella nuclear persiste.</p>
+</div></details>
+
+<details><summary>Riesgos principales de este escenario</summary><div>
+<p><strong>Riesgo de calidad:</strong> La velocidad genera errores. El incidente del dossier mezclado en Argentina de Q1 2027 es un ejemplo. A escala, estos incidentes pueden disparar inspecciones regulatorias y frenar el pipeline entero.</p>
+<p><strong>Riesgo geopolítico:</strong> Las restricciones post-robo de Agent-2 pueden limitar qué herramientas están disponibles en qué jurisdicciones. Novartis opera en 7+ jurisdicciones regulatorias en la región.</p>
+<p><strong>Riesgo de compliance:</strong> Cada output de IA usado en un filing regulatorio requiere documentar por qué era aceptable. A 2.5× leverage, el volumen de documentación de compliance puede neutralizar parte del ahorro.</p>
+<p><strong>Riesgo reputacional:</strong> Un fallo de calidad en un dossier de fármaco oncológico puede tener consecuencias que van más allá de Novartis y afectar la confianza regulatoria en toda la industria.</p>
+</div></details>
+
+</div><!-- /scenario-inner -->
+</div><!-- /scenario-panel fasttakeoff -->
+
+<details style="margin-top:2rem"><summary>Fuentes y trazabilidad</summary><div><p><strong>AI-1/2/3</strong> AI 2027 forecasts. <strong>AI-4</strong> AI Futures Model. <strong>METR-1/2/3</strong> Time horizons + developer study. <strong>RB-1</strong> RE-Bench. <strong>NV-1/2</strong> Novartis Pipeline + Annual Report 2025. <strong>USER-1/2/3</strong> Tres informes pipeline Américas. <strong>BIO</strong> Clinical Development Success Rates 2011-2020.</p></div></details>
+
+</section>
+
+<!-- ══════ GRAPH SIDEBAR ══════ -->
+<aside class="graph-area">
+<div class="graph-inner">
+<div class="sb-date" id="sb-date">Mar 2026</div>
+
+<div class="sb-section">
+<div class="sb-lbl">Impacto IA por región</div>
+<div class="sb-bar"><span class="sb-bar-lbl">Canadá</span><div class="sb-bar-track"><div class="sb-bar-fill" id="rb-ca" style="width:45%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">Brasil</span><div class="sb-bar-track"><div class="sb-bar-fill" id="rb-br" style="width:32%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">México</span><div class="sb-bar-track"><div class="sb-bar-fill" id="rb-mx" style="width:25%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">Argentina</span><div class="sb-bar-track"><div class="sb-bar-fill" id="rb-ar" style="width:22%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">Colombia</span><div class="sb-bar-track"><div class="sb-bar-fill" id="rb-co" style="width:15%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">Chile</span><div class="sb-bar-track"><div class="sb-bar-fill" id="rb-cl" style="width:12%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">Venezuela</span><div class="sb-bar-track"><div class="sb-bar-fill" id="rb-ve" style="width:3%;background:#aaa"></div></div></div>
+</div>
+
+<div class="sb-hr"></div>
+<div class="sb-row">
+<div class="sb-row-item"><span class="sb-lbl">Capture</span><span class="v sb-val-anim" id="kv-capture">18.89</span></div>
+<div class="sb-row-item"><span class="sb-lbl">Δ base</span><span class="v sb-val-anim" id="kv-delta">+8.1%</span></div>
+<div class="sb-row-item"><span class="sb-lbl">P media</span><span class="v sb-val-anim" id="kv-pmedia">29.4%</span></div>
+</div>
+
+<div class="sb-hr"></div>
+<div class="sb-section"><div class="sb-lbl">Ventas región</div><div class="sb-val sb-val-anim" id="kv-revenue" style="color:var(--accent)">$3.7B</div><div class="sb-sub" id="kv-revsub">América ex-US 2025</div></div>
+<div class="sb-section"><div class="sb-lbl">Drug lag</div><div class="sb-val sb-val-anim" id="kv-druglag">36-42 mo</div><div class="sb-sub" id="kv-dlagsub">Promedio histórico</div></div>
+<div class="sb-section"><div class="sb-lbl">AI leverage</div><div class="sb-val sb-val-anim" id="kv-ailev">1.05×</div><div class="sb-sub" id="kv-ailevsub">Pharma capture 2025</div></div>
+
+<div class="sb-hr"></div>
+<div class="sb-section">
+<div class="sb-lbl">IA elasticidad por activo</div>
+<div class="sb-bar"><span class="sb-bar-lbl">Ianal. LN</span><div class="sb-bar-track"><div class="sb-bar-fill" id="ab-ianal" style="width:95%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">Inclisiran</span><div class="sb-bar-track"><div class="sb-bar-fill" id="ab-inclis" style="width:65%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">Remibr.</span><div class="sb-bar-track"><div class="sb-bar-fill" id="ab-remib" style="width:60%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">Fabhalta</span><div class="sb-bar-track"><div class="sb-bar-fill" id="ab-fabh" style="width:40%"></div></div></div>
+<div class="sb-bar"><span class="sb-bar-lbl">Pluvicto</span><div class="sb-bar-track"><div class="sb-bar-fill" id="ab-pluv" style="width:15%"></div></div></div>
+</div>
+
+<div class="sb-hr"></div>
+<div class="sb-section">
+<div class="sb-lbl" id="kv-siglbl">Señales clave</div>
+<div style="font-family:'Courier New',monospace;font-size:10px;margin-top:6px;line-height:1.8;color:#444" id="kv-signals">
+▸ Ianalumab Sjö filing 2H 2026<br>
+▸ Pelacarsen HORIZON 1H 2026<br>
+▸ Remibrutinib MS Apr 2026<br>
+▸ ANVISA eCTD 4.0 Nov 2025<br>
+▸ COFEPRIS Reliance Jul 2025<br>
+▸ Pluvicto Denton TX 2026
+</div>
+</div>
+</div>
+</aside>
+
+</div><!-- /main-grid -->
+
+<footer class="site-footer">
+<div><strong>Néstor Guerra · NCompany</strong> · 2026 · Reforecast integrado · Modelo cuantitativo + lectura estratégica</div>
+<div style="text-align:right">Marzo 2026</div>
+</footer>
+
+<script>
+function T(n){
+  document.querySelectorAll('.tp').forEach(function(e,i){e.classList.toggle('active',i===n)});
+  document.querySelectorAll('.tbt').forEach(function(e,i){e.classList.toggle('active',i===n)});
+}
+var openScenario=null;
+function toggleScenario(w){
+  var p={controlled:document.getElementById('panel-controlled'),fasttakeoff:document.getElementById('panel-fasttakeoff')};
+  var b={controlled:document.getElementById('btn-controlled'),fasttakeoff:document.getElementById('btn-fasttakeoff')};
+  var x={controlled:'sc-',fasttakeoff:'ft-'};
+  if(openScenario===w){p[w].classList.remove('open');b[w].classList.remove('opened');hTL('sc-');hTL('ft-');openScenario=null;}
+  else{if(openScenario){p[openScenario].classList.remove('open');b[openScenario].classList.remove('opened');hTL(x[openScenario]);}
+  p[w].classList.add('open');b[w].classList.add('opened');sTL(x[w]);openScenario=w;
+  setTimeout(function(){p[w].scrollIntoView({behavior:'smooth',block:'start'})},150);}
+  setTimeout(bS,900);
+}
+function sTL(p){document.querySelectorAll('.tl-item[data-section^="'+p+'"]').forEach(function(e){e.style.display='block'});}
+function hTL(p){document.querySelectorAll('.tl-item[data-section^="'+p+'"]').forEach(function(e){e.style.display='none'});}
+var aS=[];
+function bS(){aS=[];document.querySelectorAll('[id]').forEach(function(el){var t=document.querySelector('.tl-item[data-section="'+el.id+'"]');if(t&&t.style.display!=='none')aS.push({id:el.id,top:el.offsetTop,el:t});});aS.sort(function(a,b){return a.top-b.top});}
+function uT(){var s=window.scrollY+200,c=-1;for(var i=aS.length-1;i>=0;i--)if(s>=aS[i].top){c=i;break;}aS.forEach(function(x,i){x.el.classList.remove('active','past');if(i<c)x.el.classList.add('past');else if(i===c)x.el.classList.add('active');});}
+
+/* ══════ ANIMATED SIDEBAR DATA ══════
+   [0]date [1]color [2]regions[7] [3]capture [4]delta [5]pmedia
+   [6]revenue [7]revsub [8]druglag [9]dlagsub [10]ailev [11]ailevsub
+   [12]assets[5] [13]siglbl [14]signals */
+var D={
+'summary':['Mar 2026','var(--accent)',[45,32,25,22,15,12,3],'18.89','+8.1%','29.4%','$3.7B','Am\u00e9rica ex-US 2025','36-42 mo','Promedio hist\u00f3rico','1.05\u00d7','Pharma capture 2025',[95,65,60,40,15],'Se\u00f1ales clave','\u25b8 Ianalumab Sj\u00f6 filing 2H 2026<br>\u25b8 Pelacarsen HORIZON 1H 2026<br>\u25b8 Remibrutinib MS Apr 2026<br>\u25b8 ANVISA eCTD 4.0 Nov 2025<br>\u25b8 COFEPRIS Reliance Jul 2025<br>\u25b8 Pluvicto Denton TX 2026'],
+'methodology':['Late 2025','var(--accent)',[30,18,12,10,8,7,2],'17.47','\u2014','26.96%','$3.7B','Pre-IA \u00b7 Baseline','36-42 mo','Sin aceleraci\u00f3n','1.05\u00d7','METR: \u221219% dev speed',[90,60,55,35,12],'Filtro de realidad','\u25b8 AI 2027: capability 85%<br>\u25b8 Enterprise capture: 35%<br>\u25b8 GxP friction: \u221240-60%<br>\u25b8 Physical bottleneck: hard<br>\u25b8 Compliance: overhead alto<br>\u25b8 METR dev RCT: \u221219%'],
+'baseline':['2025','var(--accent)',[35,22,16,14,10,8,2],'17.47','\u2014','26.96%','$3.675B','6% global \u00b7 3,933 FTEs','36-42 mo','Drug lag hist\u00f3rico','1.05\u00d7','Coding assistants',[95,65,60,40,15],'Pipeline 11 activos','\u25b8 CRM \u00b7 Inmunolog\u00eda \u00b7 Neuro<br>\u25b8 Oncolog\u00eda \u00b7 RadioLigand<br>\u25b8 Ventas globales $54.5B<br>\u25b8 Margen core 40.1%<br>\u25b8 FCF $17.6B<br>\u25b8 FTEs regi\u00f3n: 3,933'],
+'scenarios':['2026','var(--accent)',[50,38,28,24,16,14,3],'17.47\u219218.89','+8.1%','29.4%','$3.7B','Caso base integrado','20-28 mo','Caso base controlado','1.20\u00d7','Caso base 2026',[95,65,60,40,15],'4 escenarios','\u25b8 Baseline: sin IA<br>\u25b8 Controlled: +8.1%<br>\u25b8 Fast takeoff: +14.0%<br>\u25b8 Max exploit: +17.3%<br>\u25b8 Monte Carlo 20K iter<br>\u25b8 11 activos \u00d7 10 clusters'],
+'results':['2026','var(--accent)',[55,42,32,28,18,15,3],'18.89','+8.1%','29.4%','~$5-5.5B','Caso base 2030','20-28 mo','Caso base','1.20\u00d7','Novartis capturable',[95,68,62,42,15],'\u0394 por activo (caso base)','\u25b8 Ianal. LN: +0.41 capture<br>\u25b8 Inclisiran: +0.17<br>\u25b8 Remibr. MS: +0.14<br>\u25b8 Pelabresib: +0.09<br>\u25b8 Fabhalta: +0.07<br>\u25b8 Pluvicto: +0.03'],
+'countries':['2027','var(--accent)',[62,50,38,32,22,18,3],'18.89','+8.1%','29.4%','~$5-5.5B','Caso base 2030','20-28 mo','Post-aceleraci\u00f3n','1.30\u00d7','SOP formalizado',[95,68,62,42,15],'Filing por pa\u00eds','\u25b8 Canad\u00e1: Priority 180d<br>\u25b8 Brasil: ANVISA eCTD 4.0<br>\u25b8 M\u00e9xico: COFEPRIS Reliance<br>\u25b8 Argentina: ANMAT coop.<br>\u25b8 Colombia: INVIMA virtual<br>\u25b8 Drug lag CA\u2192BR: ~6-8 mo'],
+'matrix':['Mid 2027','var(--accent)',[65,52,40,34,24,20,3],'18.89','+8.1%','29.4%','~$5-5.5B','Caso base 2030','20-28 mo','Comprimiendo','1.30\u00d7','Evidence generation',[95,70,65,45,15],'P>50% por mercado','\u25b8 Canad\u00e1: 6-7 activos<br>\u25b8 Brasil: 3-5 activos<br>\u25b8 M\u00e9xico: 2-4 activos<br>\u25b8 Argentina: 2-3 activos<br>\u25b8 Sj\u00f6gren CA: P=95%<br>\u25b8 Ianal. LN BR: P=32%'],
+'changes':['2028','var(--accent)',[68,55,42,36,25,20,3],'18.89','+8.1%','29.4%','~$5-5.5B','Caso base 2030','20-28 mo','IA s\u00ed + no cambia','1.60\u00d7','M\u00e1xima convergencia',[95,72,68,48,16],'Qu\u00e9 s\u00ed cambia la IA','\u25b8 Med. writing: \u221235% time<br>\u25b8 Dossier comp.: \u221230%<br>\u25b8 HTA prep.: \u221225%<br>\u25b8 Signal detection: \u221220%<br>\u25b8 NO cambia: biolog\u00eda P3<br>\u25b8 NO cambia: nuclear network'],
+'sensitivity':['2029','var(--accent)',[70,58,44,38,26,22,3],'18.89','+8.1%','29.4%','~$5-5.5B','Caso base 2030','20-28 mo','Acceso > IA','1.60\u00d7','Techo controlled',[95,72,68,48,16],'Sensibilidad \u0394 captura','\u25b8 +10% Acceso BR/MX: +2.8<br>\u25b8 +10% IA leverage: +1.4<br>\u25b8 +10% Vel. reg.: +1.0<br>\u25b8 Ciber drag: \u22120.5<br>\u25b8 Conclusi\u00f3n: acceso manda<br>\u25b8 IA = palanca secundaria'],
+'strategy':['2026\u201328','var(--accent)',[72,58,45,38,28,22,3],'18.89','+8.1%','29.4%','~$5-5.5B','Caso base 2030','20-28 mo','Monitorizar','1.20\u21921.60\u00d7','Rango caso base',[95,72,68,48,16],'Se\u00f1ales a monitorizar','\u25b8 METR time horizons<br>\u25b8 Enterprise pharma evidence<br>\u25b8 Ianalumab filings/readouts<br>\u25b8 M\u00e9xico/Brasil acceso<br>\u25b8 Radioligand network<br>\u25b8 Incidentes seguridad'],
+'about':['Nov 2026','var(--accent)',[72,58,45,38,28,22,3],'18.89','+8.1%','29.4%','$3.7\u21925.5B','Rango 2025\u21922030','24-30 mo','Punto de decisi\u00f3n','1.20\u00d7','Nov 2026 \u00b7 Bifurcaci\u00f3n',[95,72,68,48,16],'Decisi\u00f3n estrat\u00e9gica','\u25b8 Controlled: P 50-55%<br>\u25b8 Fast takeoff: P 15-20%<br>\u25b8 1\u00aa ola: en curso<br>\u25b8 2\u00aa ola: preparando<br>\u25b8 3\u00aa ola: incierta<br>\u25b8 \u00bfCu\u00e1nto gas se le da?'],
+'sc-nov2026':['Nov 2026','var(--warm)',[48,32,24,20,14,12,3],'18.89','+8.1%','29.4%','$3.7B','Punto partida','~24 mo','Estimaci\u00f3n inicial','1.20\u00d7','Pharma controlled',[95,68,62,42,15],'\u25cf Controlled \u00b7 Nov 2026','\u25b8 Filing: secuencial<br>\u25b8 CA \u2192 BR \u2192 MX<br>\u25b8 GxP: validaci\u00f3n serial<br>\u25b8 Compliance: riesgo bajo<br>\u25b8 FTEs IA: ~15 regi\u00f3n<br>\u25b8 1\u00aa ola: 3 filings activos'],
+'sc-q1-2027':['Q1 2027','var(--warm)',[56,38,28,24,16,14,3],'18.89','+8.1%','29.4%','~$4.2B','Proyecci\u00f3n creciente','~18-22 mo','Comprimiendo','1.30\u00d7','SOP formalizado',[95,70,65,44,15],'\u25cf Controlled \u00b7 Q1 2027','\u25b8 Sj\u00f6gren: aprobado CA<br>\u25b8 Drug lag CA: ~7 mo<br>\u25b8 Dossier: 9-12 sem<br>\u25b8 Module 2.7 con IA en SOP<br>\u25b8 2-3 FTEs liberados/afil.<br>\u25b8 Filing BR: en curso'],
+'sc-mid2027':['Mid 2027','var(--warm)',[62,44,34,28,20,16,3],'18.89','+8.1%','29.4%','~$4.5B','Acelerando','~18-24 mo','Gate: acceso','1.40\u00d7','Evidence generation',[95,72,66,46,15],'\u25cf Controlled \u00b7 Mid 2027','\u25b8 Evidence packages/pagador<br>\u25b8 Inclisiran: outcomes BR/AR<br>\u25b8 Remibr. MS: filing global<br>\u25b8 Acceso > IA (\u0394 +2.8 vs +1.4)<br>\u25b8 Cuello: reembolso SUS<br>\u25b8 Drug lag: mejora lenta'],
+'sc-2028':['2028','var(--warm)',[72,54,42,34,24,20,3],'18.89','+8.1%','29.4%','~$4.8B','Convergencia IA\u00d7pipeline','~20 mo','vs 36-42 hist.','1.70\u00d7','Techo controlled',[95,75,70,48,16],'\u25cf Controlled \u00b7 2028','\u25b8 Ianal. LN: readout window<br>\u25b8 Dossier LN: 9-12 mo post<br>\u25b8 Inclisiran: value dossiers<br>\u25b8 Remibr.: multi-mercado<br>\u25b8 Compresi\u00f3n reg.: \u221225-35%<br>\u25b8 Filings regi\u00f3n: 6-7'],
+'sc-2029':['2029','var(--warm)',[76,58,46,38,26,22,3],'18.89','+8.1%','29.4%','~$5.0B','Ejecuci\u00f3n comercial','~20-28 mo','Estabilizado','1.70\u00d7','Techo mantenido',[95,75,70,48,16],'\u25cf Controlled \u00b7 2029','\u25b8 6-8 activos aprobados/acceso<br>\u25b8 Acceso: factor decisivo<br>\u25b8 3\u00aa ola: fuera de alcance<br>\u25b8 AAA817: P baja<br>\u25b8 LXE408: P <2%<br>\u25b8 +10% acceso > +10% IA'],
+'sc-2030':['2030','var(--warm)',[78,60,48,40,28,24,3],'18.89','+8.1%','29.4%','~$5-5.5B','Controlled 2030','20-28 mo','Balance final','1.70\u00d7','Controlled accel.',[95,75,70,48,16],'\u25cf Controlled \u00b7 2030','\u25b8 Capture: +8.1% vs baseline<br>\u25b8 Launches: +2.69 activo-pa\u00eds<br>\u25b8 P>50% CA: 6-7<br>\u25b8 P>50% BR: 3-5<br>\u25b8 3\u00aa ola: no capturada<br>\u25b8 Riesgo: bajo-moderado'],
+'ft-nov2026':['Nov 2026','var(--cool)',[58,42,35,28,18,15,3],'19.91','+14.0%','31.4%','$3.7B','Punto de partida','~18-22 mo','Acelerando r\u00e1pido','1.40\u00d7','Fast takeoff',[95,72,65,48,18],'\u25c6 Fast Takeoff \u00b7 Nov 2026','\u25b8 Filing: simult\u00e1neo 3\u00d73<br>\u25b8 CA + BR + MX en paralelo<br>\u25b8 GxP: validaci\u00f3n paralela<br>\u25b8 Unidad transversal IA<br>\u25b8 FTEs IA: ~30 regi\u00f3n<br>\u25b8 Riesgo: alto aceptado'],
+'ft-q1-2027':['Q1 2027','var(--cool)',[70,54,44,36,24,20,3],'19.91','+14.0%','31.4%','~$4.5B','Aceleraci\u00f3n visible','~14-18 mo','Superhuman coder era','1.50\u00d7','Automatiza estrategia',[95,76,70,52,20],'\u25c6 Fast Takeoff \u00b7 Q1 2027','\u25b8 Sj\u00f6gren: CA mismo trimestre<br>\u25b8 Drug lag CA: ~4 mo<br>\u25b8 Dossier: 6-8 sem<br>\u25b8 IA: estrategia de evidencia<br>\u25b8 Incidente: dossier AR error<br>\u25b8 Freno: 4-6 sem post-inc.'],
+'ft-mid2027':['Mid 2027','var(--cool)',[80,64,52,44,30,25,4],'19.91','+14.0%','31.4%','~$5.0B','Agencias con IA','~10-12 mo','vs ~18-24 controlled','1.60\u00d7','Agencias adoptan IA',[95,80,74,55,22],'\u25c6 Fast Takeoff \u00b7 Mid 2027','\u25b8 ANVISA: pre-screening IA<br>\u25b8 COFEPRIS: verificaci\u00f3n IA<br>\u25b8 Health CA: \u221225% review<br>\u25b8 2\u00aa ola: 1-2 trim. adelantada<br>\u25b8 Geo risk: Agent-2 theft<br>\u25b8 Compliance overhead sube'],
+'ft-2028':['2028','var(--cool)',[88,74,60,52,38,30,5],'19.91','+14.0%','31.4%','~$5.8B','Portfolio 12-18mo adelantado','~12 mo','vs ~20 controlled','2.50\u00d7','M\u00e1ximo capturable',[95,85,80,60,25],'\u25c6 Fast Takeoff \u00b7 2028','\u25b8 Ianal. LN: dossier 4-6 mo<br>\u25b8 ISS/ISE: 2-3 sem (vs 6-8)<br>\u25b8 Inclisiran: 5 mkts filing<br>\u25b8 Remibr.: aprobado CA<br>\u25b8 Filings: 8-9 activos<br>\u25b8 3 olas simult\u00e1neas'],
+'ft-2029':['2029','var(--cool)',[92,78,64,56,40,34,5],'19.91','+14.0%','31.4%','~$6.2B','3\u00aa ola materializa','~12-16 mo','Estabilizado','2.50\u00d7','Estabilizado',[95,85,80,62,28],'\u25c6 Fast Takeoff \u00b7 2029','\u25b8 AAA817: P 20-25% CA<br>\u25b8 LXE408: P 8-12% BR<br>\u25b8 Fabhalta: ext. 6-12mo antes<br>\u25b8 Drag seguridad: \u221215-20%<br>\u25b8 Ciber incidentes: suben<br>\u25b8 Compliance OH: alto'],
+'ft-2030':['2030','var(--cool)',[94,82,68,58,44,36,5],'19.91','+14.0%','31.4%','~$6-7B','Fast Takeoff 2030','12-18 mo','Balance final','2.50\u00d7','Fast takeoff',[95,85,80,62,28],'\u25c6 Fast Takeoff \u00b7 2030','\u25b8 Capture: +14.0% vs baseline<br>\u25b8 Launches: +4.86 activo-pa\u00eds<br>\u25b8 P>50% CA: 8-10<br>\u25b8 P>50% BR: 5-7<br>\u25b8 3\u00aa ola: s\u00ed capturada<br>\u25b8 Riesgo: alto \u00b7 drag 15-20%']
+};
+
+var sectionOrder=['summary','methodology','baseline','scenarios','results','countries','matrix','changes','sensitivity','strategy','about',
+  'sc-nov2026','sc-q1-2027','sc-mid2027','sc-2028','sc-2029','sc-2030',
+  'ft-nov2026','ft-q1-2027','ft-mid2027','ft-2028','ft-2029','ft-2030'];
+
+var G=function(id){return document.getElementById(id);};
+var rIds=['rb-ca','rb-br','rb-mx','rb-ar','rb-co','rb-cl','rb-ve'];
+var aIds=['ab-ianal','ab-inclis','ab-remib','ab-fabh','ab-pluv'];
+
+var curSt=null;
+function applyState(id){
+  if(id===curSt)return;
+  var d=D[id];if(!d)return;
+  curSt=id;
+  var c=d[1];
+  /* Date */
+  var db=G('sb-date');db.textContent=d[0];
+  db.style.background=c==='var(--accent)'?'#000':(c==='var(--warm)'?'#7a6a52':'#5a6b7a');
+  /* Region bars — width animates via CSS transition */
+  for(var i=0;i<7;i++){var b=G(rIds[i]);b.style.width=d[2][i]+'%';b.style.background=d[2][i]<=5?'#aaa':(c==='var(--accent)'?'#2a623d':c==='var(--warm)'?'#7a6a52':'#5a6b7a');}
+  /* KPI row */
+  G('kv-capture').textContent=d[3];G('kv-capture').style.color=c==='var(--accent)'?'#2a623d':c==='var(--warm)'?'#7a6a52':'#5a6b7a';
+  G('kv-delta').textContent=d[4];G('kv-pmedia').textContent=d[5];
+  /* Revenue */
+  var rc=c==='var(--accent)'?'#2a623d':c==='var(--warm)'?'#7a6a52':'#5a6b7a';
+  G('kv-revenue').textContent=d[6];G('kv-revenue').style.color=rc;G('kv-revsub').textContent=d[7];
+  /* Drug lag */
+  G('kv-druglag').textContent=d[8];G('kv-dlagsub').textContent=d[9];
+  /* AI leverage */
+  G('kv-ailev').textContent=d[10];G('kv-ailev').style.color=rc;G('kv-ailevsub').textContent=d[11];
+  /* Asset bars */
+  for(var j=0;j<5;j++){var ab=G(aIds[j]);ab.style.width=d[12][j]+'%';ab.style.background=d[12][j]<=10?'#aaa':(c==='var(--accent)'?'#2a623d':c==='var(--warm)'?'#7a6a52':'#5a6b7a');}
+  /* Signals */
+  G('kv-siglbl').textContent=d[13];G('kv-signals').innerHTML=d[14];
+}
+
+function findSection(){
+  var sy=window.scrollY+250,best='summary';
+  for(var i=sectionOrder.length-1;i>=0;i--){
+    var el=G(sectionOrder[i]);if(!el)continue;
+    if(sy>=el.getBoundingClientRect().top+window.scrollY){
+      var sid=sectionOrder[i];
+      if(sid.indexOf('sc-')===0||sid.indexOf('ft-')===0){
+        var pn=el.closest('.scenario-panel');
+        if(pn&&pn.classList.contains('open')){best=sid;break;}
+      }else{best=sid;break;}
+    }
+  }
+  return best;
+}
+
+var lt=0;
+function onScroll(){
+  uT();var n=Date.now();if(n-lt<60)return;lt=n;applyState(findSection());
+}
+window.addEventListener('scroll',onScroll);
+window.addEventListener('load',function(){bS();uT();applyState('summary');});
+window.addEventListener('resize',bS);
+</script>
+</script>
+</body></html>
