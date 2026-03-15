@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Pre-AGI en Novartis 2030</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--vivid-background:#fffff8;--dull-background:#f0f0f0;--dull-foreground:#666;--accent:#2a623d;--foreground:#111}
+html{font-size:15px;scroll-behavior:smooth}
+body{background-color:var(--vivid-background);color:#111;font-family:'EB Garamond',Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;-webkit-font-smoothing:antialiased;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
+::selection{background:var(--accent);color:#fff}
+.wrap{max-width:780px;margin:0 auto;padding:0 24px 120px}
+nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:32px 0 16px}
+nav h1{font-size:68px;font-weight:400;margin:0 0 1.5rem;line-height:1}
+nav h1 a{text-decoration:none;color:inherit}
+.nav-links{display:flex;gap:28px;font-size:1.25rem;align-items:center;padding:8px 0}
+.nav-links a{text-decoration:none;color:inherit}.nav-links a:hover{text-decoration:underline}
+.nav-dropdown{position:relative}.nav-dropdown:hover .nav-dd-menu{display:block}
+.nav-dd-menu{display:none;position:absolute;top:100%;right:0;width:200px;background:var(--vivid-background);border:1px solid #000;border-radius:6px;padding:8px 0;z-index:50;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.nav-dd-menu a{display:block;padding:8px 16px;font-family:-apple-system,system-ui,sans-serif;font-size:.85rem;text-decoration:none;color:inherit}
+.nav-dd-menu a:hover{background:var(--accent);color:#fff;text-decoration:none}.nav-dd-menu hr{border:0;height:0;border-top:1px solid #ddd;margin:0}
+.nav-links .bd{border:1.5px solid #000;border-radius:6px;padding:4px 12px}
+h2{font-weight:400;line-height:1;margin-top:2rem;margin-bottom:1.5rem;font-size:2.2rem}
+p{font-size:1.4rem;line-height:2rem;margin-top:1.4rem;margin-bottom:1.4rem}
+@media(max-width:730px){p{font-size:1.25rem;line-height:1.45}}
+a{color:inherit;text-decoration:underline;text-decoration-skip-ink:auto;text-decoration-thickness:1.5px;text-underline-offset:1.5px}
+strong{font-weight:700}
+
+/* Research cards — exact ai-2027 style */
+.r-card{display:block;border:1.5px solid rgb(100,100,98);border-radius:10px;padding:28px 32px;margin:28px 0;text-decoration:none;color:inherit;transition:border-color .2s, box-shadow .2s}
+.r-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.06);text-decoration:none}
+.r-card h3{font-size:1.7rem;font-style:italic;font-weight:400;line-height:1.2;margin:0 0 .8rem}
+.r-card .r-desc{font-family:-apple-system,system-ui,sans-serif;font-size:.95rem;line-height:1.65;color:#444;margin-bottom:20px}
+.r-card .r-visual{width:100%;border-radius:6px;overflow:hidden;background:#f8f7f2;padding:20px;position:relative}
+
+/* SVG chart styles */
+.r-visual svg{width:100%;height:auto;display:block}
+.r-visual .wm{position:absolute;bottom:8px;right:12px;font-family:'Courier New',monospace;font-size:.7rem;color:#bbb}
+
+/* Mini bar styles inside cards */
+.mini-bars{display:flex;flex-direction:column;gap:4px}
+.mini-bar{display:flex;align-items:center;gap:6px}
+.mini-bar-lbl{font-family:'Courier New',monospace;font-size:10px;width:90px;text-align:right;flex-shrink:0;color:#666}
+.mini-bar-track{flex:1;height:8px;background:#e8e8e4;border-radius:2px;overflow:hidden}
+.mini-bar-fill{height:100%;border-radius:2px}
+
+/* Mini table inside cards */
+.mini-tbl{width:100%;border-collapse:collapse;font-family:-apple-system,system-ui,sans-serif;font-size:.75rem}
+.mini-tbl th{text-align:left;padding:4px 6px;border-bottom:2px solid #111;font-weight:600;font-size:.68rem;text-transform:uppercase;letter-spacing:.03em}
+.mini-tbl td{padding:4px 6px;border-bottom:1px solid #ddd}
+.mini-tbl .hi{color:#16a34a;font-weight:600}.mini-tbl .md{color:#b45309;font-weight:600}
+
+/* Scenario mini cards */
+.sc-row{display:flex;gap:12px;margin-top:12px}
+.sc-mini{flex:1;border:1.5px solid #000;border-radius:6px;padding:12px;text-align:center}
+.sc-mini .sc-label{font-family:'Courier New',monospace;font-size:10px;text-transform:uppercase;margin-bottom:4px;color:#666}
+.sc-mini .sc-val{font-family:'Courier New',monospace;font-size:1.3rem;font-weight:700}
+.sc-mini .sc-sub{font-family:'Courier New',monospace;font-size:10px;color:#999;margin-top:2px}
+.sc-mini.accent{border-color:var(--accent);background:var(--accent);color:#fff}
+.sc-mini.accent .sc-label,.sc-mini.accent .sc-sub{color:rgba(255,255,255,.7)}
+.sc-mini.red{border-color:#b91c1c;background:#b91c1c;color:#fff}
+.sc-mini.red .sc-label,.sc-mini.red .sc-sub{color:rgba(255,255,255,.7)}
+
+/* Country matrix mini */
+.country-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+@media(max-width:500px){.country-grid{grid-template-columns:repeat(2,1fr)}}
+.c-cell{text-align:center;padding:8px;border-radius:4px;font-family:'Courier New',monospace}
+.c-cell .c-name{font-size:10px;text-transform:uppercase;margin-bottom:2px}
+.c-cell .c-val{font-size:1.1rem;font-weight:700}
+
+footer{max-width:780px;margin:0 auto;padding:40px 24px 60px;border-top:1px solid #ddd;font-family:-apple-system,system-ui,sans-serif;font-size:.8rem;color:var(--dull-foreground);display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+<h1><a href="Nov_AI_2030.html">Pre-AGI en Novartis 2030</a></h1>
+<div class="nav-links">
+<a href="Nov_AI_2030.html">Summary</a>
+<div class="nav-dropdown"><a href="Nov_AI_2030_Research.html" style="font-weight:700">Research</a><div class="nav-dd-menu"><a href="Nov_AI_2030.html#methodology">Methodology</a><hr><a href="Nov_AI_2030.html#scenarios">Scenarios</a><hr><a href="Nov_AI_2030.html#results">Results</a><hr><a href="Nov_AI_2030.html#sensitivity">Sensitivity</a><hr><a href="Nov_AI_2030.html#strategy">Strategy</a></div></div>
+<a href="Nov_AI_2030_About.html">About</a>
+</div>
+</nav>
+
+<h2>Research</h2>
+
+<p>El reforecast Pre-AGI en Novartis 2030 se apoya en cinco módulos de investigación que no pudieron justificarse completamente en el texto principal. A continuación presentamos la investigación detallada detrás de cada proyección clave.</p>
+
+<!-- ══════ CARD 1: MONTE CARLO ══════ -->
+<a href="Nov_AI_2030.html#scenarios" class="r-card">
+<h3>Modelo Monte Carlo</h3>
+<div class="r-desc">El reforecast predice +2.69 lanzamientos activo-país en el caso base y +4.86 en fast takeoff. Este módulo detalla el modelo de 20.000 iteraciones × 11 activos × 10 clusters país que sustenta esas predicciones, incluyendo las tasas base BIO 2011-2020 y los ajustes por señal positiva.</div>
+<div class="r-visual">
+<div class="sc-row">
+<div class="sc-mini"><div class="sc-label">Baseline</div><div class="sc-val">29.66</div><div class="sc-sub">launches</div></div>
+<div class="sc-mini accent"><div class="sc-label">Controlled</div><div class="sc-val">32.34</div><div class="sc-sub">+2.69</div></div>
+<div class="sc-mini red"><div class="sc-label">Fast Takeoff</div><div class="sc-val">34.51</div><div class="sc-sub">+4.86</div></div>
+<div class="sc-mini"><div class="sc-label">Drag</div><div class="sc-val">29.81</div><div class="sc-sub">+0.15</div></div>
+</div>
+<svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="margin-top:16px">
+<text x="10" y="16" font-family="Courier New" font-size="9" fill="#999">CAPTURE INDEX POR ESCENARIO</text>
+<rect x="10" y="28" width="640" height="1" fill="#ddd"/>
+<!-- Baseline -->
+<rect x="10" y="36" width="475" height="16" rx="2" fill="#ddd"/>
+<text x="490" y="48" font-family="Courier New" font-size="10" fill="#999">17.47 · Baseline</text>
+<!-- Drag -->
+<rect x="10" y="58" width="491" height="16" rx="2" fill="#b45309" opacity=".3"/>
+<text x="506" y="70" font-family="Courier New" font-size="10" fill="#b45309">17.59 · Governance drag</text>
+<!-- Controlled -->
+<rect x="10" y="80" width="530" height="16" rx="2" fill="#2a623d"/>
+<text x="545" y="92" font-family="Courier New" font-size="10" fill="#2a623d" font-weight="700">18.89 · Controlled</text>
+<!-- Fast -->
+<rect x="10" y="102" width="560" height="16" rx="2" fill="#b91c1c"/>
+<text x="575" y="114" font-family="Courier New" font-size="10" fill="#b91c1c" font-weight="700">19.91 · Fast Takeoff</text>
+</svg>
+<div class="wm">novartis-2030</div>
+</div>
+</a>
+
+<!-- ══════ CARD 2: AI 2027 FILTER ══════ -->
+<a href="Nov_AI_2030.html#methodology" class="r-card">
+<h3>Filtro de traducción AI 2027 → Pharma</h3>
+<div class="r-desc">AI 2027 predice un superhuman coder en marzo 2027 y un AI R&D multiplier de 4-10× para mediados de ese año. Este módulo detalla cómo traducimos esas proyecciones a "leverage operativa capturable" en pharma enterprise, descontando GxP, validación, firma responsable y cuellos de botella físicos. Basado en METR time-horizon data y el RCT con desarrolladores (19% slowdown).</div>
+<div class="r-visual">
+<div style="display:flex;gap:12px;margin-bottom:12px">
+<div style="flex:1;text-align:center"><div style="font-family:'Courier New',monospace;font-size:9px;color:#999;text-transform:uppercase;margin-bottom:4px">AI 2027 multiplier</div></div>
+<div style="flex:1;text-align:center"><div style="font-family:'Courier New',monospace;font-size:9px;color:#999;text-transform:uppercase;margin-bottom:4px">Pharma capturable</div></div>
+<div style="flex:1;text-align:center"><div style="font-family:'Courier New',monospace;font-size:9px;color:#999;text-transform:uppercase;margin-bottom:4px">Discount factor</div></div>
+</div>
+<svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+<text x="10" y="16" font-family="Courier New" font-size="9" fill="#999">AI 2027 MULTIPLIER vs PHARMA LEVERAGE CAPTURABLE</text>
+<!-- Grid lines -->
+<line x1="60" y1="30" x2="60" y2="185" stroke="#eee" stroke-width="1"/>
+<line x1="180" y1="30" x2="180" y2="185" stroke="#eee" stroke-width="1"/>
+<line x1="300" y1="30" x2="300" y2="185" stroke="#eee" stroke-width="1"/>
+<line x1="420" y1="30" x2="420" y2="185" stroke="#eee" stroke-width="1"/>
+<line x1="540" y1="30" x2="540" y2="185" stroke="#eee" stroke-width="1"/>
+<line x1="660" y1="30" x2="660" y2="185" stroke="#eee" stroke-width="1"/>
+<!-- Labels -->
+<text x="60" y="198" font-family="Courier New" font-size="9" fill="#999" text-anchor="middle">2025</text>
+<text x="180" y="198" font-family="Courier New" font-size="9" fill="#999" text-anchor="middle">L2025</text>
+<text x="300" y="198" font-family="Courier New" font-size="9" fill="#999" text-anchor="middle">2026</text>
+<text x="420" y="198" font-family="Courier New" font-size="9" fill="#999" text-anchor="middle">L2026</text>
+<text x="540" y="198" font-family="Courier New" font-size="9" fill="#999" text-anchor="middle">2027</text>
+<text x="660" y="198" font-family="Courier New" font-size="9" fill="#999" text-anchor="middle">2028</text>
+<!-- AI 2027 curve (steeper) -->
+<polyline points="60,170 180,160 300,145 420,130 540,80 660,35" stroke="#b91c1c" stroke-width="2.5" fill="none"/>
+<text x="665" y="32" font-family="Courier New" font-size="9" fill="#b91c1c">AI 2027</text>
+<!-- Pharma capturable (flatter) -->
+<polyline points="60,172 180,168 300,160 420,150 540,138 660,115" stroke="#2a623d" stroke-width="2.5" fill="none"/>
+<text x="665" y="112" font-family="Courier New" font-size="9" fill="#2a623d">Pharma</text>
+<!-- Gap annotation -->
+<line x1="540" y1="80" x2="540" y2="138" stroke="#666" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="548" y="112" font-family="Courier New" font-size="8" fill="#666">Gap: GxP,</text>
+<text x="548" y="122" font-family="Courier New" font-size="8" fill="#666">validation,</text>
+<text x="548" y="132" font-family="Courier New" font-size="8" fill="#666">compliance</text>
+<!-- Y axis labels -->
+<text x="8" y="175" font-family="Courier New" font-size="8" fill="#999">1.0×</text>
+<text x="8" y="130" font-family="Courier New" font-size="8" fill="#999">2.0×</text>
+<text x="8" y="85" font-family="Courier New" font-size="8" fill="#999">4.0×</text>
+<text x="8" y="40" font-family="Courier New" font-size="8" fill="#999">10×</text>
+</svg>
+<div class="wm">novartis-2030</div>
+</div>
+</a>
+
+<!-- ══════ CARD 3: REGULATORY LANDSCAPE ══════ -->
+<a href="Nov_AI_2030.html#baseline" class="r-card">
+<h3>Landscape regulatorio Américas</h3>
+<div class="r-desc">El modelo requiere datos de velocidad regulatoria y condiciones de acceso para 10 clusters país. Este módulo compila las reformas regulatorias clave de 2025 (ANVISA eCTD 4.0, COFEPRIS Reliance, INVIMA células especializadas) y modela cómo interactúan con la aceleración por IA para comprimir el drug lag de 36-42 meses a 20-28 meses.</div>
+<div class="r-visual">
+<div class="mini-bars">
+<div class="mini-bar"><span class="mini-bar-lbl">Canadá</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:92%;background:var(--accent)"></div></div></div>
+<div class="mini-bar"><span class="mini-bar-lbl">Brasil</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:78%;background:var(--accent)"></div></div></div>
+<div class="mini-bar"><span class="mini-bar-lbl">México</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:64%;background:var(--accent)"></div></div></div>
+<div class="mini-bar"><span class="mini-bar-lbl">Argentina</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:66%;background:var(--accent)"></div></div></div>
+<div class="mini-bar"><span class="mini-bar-lbl">Colombia</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:50%;background:#b45309"></div></div></div>
+<div class="mini-bar"><span class="mini-bar-lbl">Chile</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:56%;background:#b45309"></div></div></div>
+<div class="mini-bar"><span class="mini-bar-lbl">ACC+</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:24%;background:#aaa"></div></div></div>
+<div class="mini-bar"><span class="mini-bar-lbl">Venezuela</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:10%;background:#aaa"></div></div></div>
+</div>
+<div style="font-family:'Courier New',monospace;font-size:9px;color:#999;margin-top:8px;text-align:right">COUNTRY READINESS SCORE (IA + regulatorio + acceso)</div>
+<div class="wm">novartis-2030</div>
+</div>
+</a>
+
+<!-- ══════ CARD 4: PIPELINE ASSET ELASTICITY ══════ -->
+<a href="Nov_AI_2030.html#results" class="r-card">
+<h3>Elasticidad IA por activo</h3>
+<div class="r-desc">¿Por qué ianalumab en lupus nephritis captura más valor de IA que los 5 activos siguientes combinados? Este módulo descompone la elasticidad de cada activo: qué parte del timeline es compresible por IA (documentación, análisis, coordinación) vs. qué parte es física o biológica (supply, trial success, reembolso). Los radioligandos son los menos elásticos; la inmunología sistémica, la más.</div>
+<div class="r-visual">
+<table class="mini-tbl">
+<thead><tr><th>Activo</th><th>Elasticidad</th><th>Δ Controlled</th><th>Δ Fast</th><th>Cuello de botella</th></tr></thead>
+<tbody>
+<tr><td><strong>Ianalumab LN</strong></td><td class="hi">Muy alta</td><td class="hi">+0.41</td><td class="hi">+1.01</td><td>Clínico + acceso</td></tr>
+<tr><td><strong>Inclisiran outc.</strong></td><td class="hi">Alta</td><td class="md">+0.17</td><td class="md">+0.35</td><td>RWE + reembolso</td></tr>
+<tr><td><strong>Remibrutinib MS</strong></td><td class="hi">Alta</td><td class="md">+0.14</td><td class="md">+0.35</td><td>Clínico + adopción</td></tr>
+<tr><td><strong>Fabhalta</strong></td><td>Media</td><td>+0.08</td><td>+0.22</td><td>Extensiones</td></tr>
+<tr><td><strong>Pluvicto mHSPC</strong></td><td style="color:#dc2626">Baja-media</td><td>~0</td><td>+0.03</td><td>Supply + nuclear</td></tr>
+<tr><td><strong>Vanrafia</strong></td><td style="color:#dc2626">Baja</td><td>~0</td><td>+0.01</td><td>Ya cerca mercado</td></tr>
+</tbody>
+</table>
+<div class="wm">novartis-2030</div>
+</div>
+</a>
+
+<!-- ══════ CARD 5: SENSITIVITY ══════ -->
+<a href="Nov_AI_2030.html#sensitivity" class="r-card">
+<h3>Análisis de sensibilidad</h3>
+<div class="r-desc">El hallazgo más contraintuitivo del modelo: un 10% de mejora en acceso en Brasil y México mueve el índice de captura casi el doble que un 10% de mejora en leverage de IA. Este módulo presenta las barras de sensibilidad completas y explica por qué acceso > IA como multiplicador de valor del pipeline.</div>
+<div class="r-visual">
+<svg viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg">
+<text x="10" y="16" font-family="Courier New" font-size="9" fill="#999">Δ CAPTURE INDEX POR +10% EN CADA PALANCA</text>
+<rect x="10" y="28" width="640" height="1" fill="#ddd"/>
+<!-- Acceso BR+MX -->
+<text x="150" y="48" font-family="-apple-system,system-ui,sans-serif" font-size="11" fill="#555" text-anchor="end">Acceso BR + MX</text>
+<rect x="160" y="36" width="420" height="18" rx="3" fill="#2a623d"/>
+<text x="586" y="50" font-family="Courier New" font-size="12" fill="#2a623d" font-weight="700">+2.8</text>
+<!-- IA leverage -->
+<text x="150" y="76" font-family="-apple-system,system-ui,sans-serif" font-size="11" fill="#555" text-anchor="end">IA leverage +10%</text>
+<rect x="160" y="64" width="210" height="18" rx="3" fill="#111"/>
+<text x="376" y="78" font-family="Courier New" font-size="12" fill="#111" font-weight="700">+1.4</text>
+<!-- Vel regulatoria -->
+<text x="150" y="104" font-family="-apple-system,system-ui,sans-serif" font-size="11" fill="#555" text-anchor="end">Velocidad regulatoria</text>
+<rect x="160" y="92" width="150" height="18" rx="3" fill="#7c3aed"/>
+<text x="316" y="106" font-family="Courier New" font-size="12" fill="#7c3aed" font-weight="700">+1.0</text>
+<!-- Ciber drag -->
+<text x="150" y="132" font-family="-apple-system,system-ui,sans-serif" font-size="11" fill="#555" text-anchor="end">Ciber/compliance drag</text>
+<rect x="160" y="120" width="75" height="18" rx="3" fill="#dc2626"/>
+<text x="241" y="134" font-family="Courier New" font-size="12" fill="#dc2626" font-weight="700">−0.5</text>
+</svg>
+<div class="wm">novartis-2030</div>
+</div>
+</a>
+
+<!-- ══════ CARD 6: SCENARIO CONSTRUCTION ══════ -->
+<a href="Nov_AI_2030.html#about" class="r-card">
+<h3>Construcción de escenarios</h3>
+<div class="r-desc">El reforecast incluye dos narrativas cronológicas completas: Controlled Acceleration (P ~50-55%) y Fast Takeoff (P ~15-20%). Este módulo explica cómo se construyeron: traduciendo los milestones de AI 2027 (superhuman coder, SAR, ASI) a hitos operativos de pharma, cruzando proyecciones de compute con ventanas de filing y readout del pipeline real.</div>
+<div class="r-visual">
+<div style="display:flex;gap:16px">
+<div style="flex:1;border:2px solid var(--accent);border-radius:8px;padding:16px;text-align:center">
+<div style="font-family:'Courier New',monospace;font-size:10px;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Controlled Acceleration</div>
+<div style="font-family:'Courier New',monospace;font-size:1.8rem;font-weight:700;color:var(--accent)">+8.1%</div>
+<div style="font-family:'Courier New',monospace;font-size:10px;color:#999;margin-top:4px">P ≈ 50-55% · Drug lag 20-28 mo</div>
+<div style="font-family:-apple-system,sans-serif;font-size:.75rem;color:#666;margin-top:8px;line-height:1.4">IA progresa al 60-70% de AI 2027. No hay superhuman coder en 2027. Automatización gradual. Leverage 1.3-1.7×.</div>
+</div>
+<div style="flex:1;border:2px solid #b91c1c;border-radius:8px;padding:16px;text-align:center">
+<div style="font-family:'Courier New',monospace;font-size:10px;text-transform:uppercase;color:#b91c1c;margin-bottom:6px">Fast Takeoff</div>
+<div style="font-family:'Courier New',monospace;font-size:1.8rem;font-weight:700;color:#b91c1c">+14.0%</div>
+<div style="font-family:'Courier New',monospace;font-size:10px;color:#999;margin-top:4px">P ≈ 15-20% · Drug lag 12-18 mo</div>
+<div style="font-family:-apple-system,sans-serif;font-size:.75rem;color:#666;margin-top:8px;line-height:1.4">IA al 80-100% de AI 2027. SC en 2027. Agencias adoptan IA. Tercera ola aparece. Leverage 1.6-2.5×.</div>
+</div>
+</div>
+<div class="wm">novartis-2030</div>
+</div>
+</a>
+
+</div><!-- /wrap -->
+
+<footer>
+<div><strong>Néstor Guerra · NCompany</strong> · 2026</div>
+<div style="text-align:right">Marzo 2026</div>
+</footer>
+</body>
+</html>

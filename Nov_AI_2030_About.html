@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Pre-AGI en Novartis 2030</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--vivid-background:#fffff8;--dull-background:#f0f0f0;--dull-foreground:#666;--accent:#2a623d;--foreground:#111}
+html{font-size:15px;scroll-behavior:smooth}
+body{background-color:var(--vivid-background);color:#111;font-family:'EB Garamond',Palatino,'Palatino Linotype','Book Antiqua',Georgia,serif;-webkit-font-smoothing:antialiased;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
+::selection{background:var(--accent);color:#fff}
+.wrap{max-width:740px;margin:0 auto;padding:0 24px 120px}
+nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:32px 0 16px}
+nav h1{font-size:68px;font-weight:400;margin:0 0 1.5rem;line-height:1}
+nav h1 a{text-decoration:none;color:inherit}
+.nav-links{display:flex;gap:28px;font-size:1.25rem;align-items:center;padding:8px 0}
+.nav-links a{text-decoration:none;color:inherit}.nav-links a:hover{text-decoration:underline}
+.nav-dropdown{position:relative}.nav-dropdown:hover .nav-dd-menu{display:block}
+.nav-dd-menu{display:none;position:absolute;top:100%;right:0;width:200px;background:var(--vivid-background);border:1px solid #000;border-radius:6px;padding:8px 0;z-index:50;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.nav-dd-menu a{display:block;padding:8px 16px;font-family:-apple-system,system-ui,sans-serif;font-size:.85rem;text-decoration:none;color:inherit}
+.nav-dd-menu a:hover{background:var(--accent);color:#fff;text-decoration:none}.nav-dd-menu hr{border:0;height:0;border-top:1px solid #ddd;margin:0}
+.nav-links .bd{border:1.5px solid #000;border-radius:6px;padding:4px 12px}
+h1.page-title{font-size:2.8rem;font-weight:400;margin:3rem 0 2rem;line-height:1.1}
+h2{font-weight:400;line-height:1;margin-top:4rem;margin-bottom:1.5rem;font-size:2.2rem}
+h3{font-size:1.7rem;font-style:italic;font-weight:400;line-height:1;margin-top:2rem;margin-bottom:1rem}
+p,li,summary{font-size:1.4rem;line-height:2rem}
+@media(max-width:730px){p,li,summary{font-size:1.25rem;line-height:1.45}}
+p{margin-top:1.4rem;margin-bottom:1.4rem}
+a{color:inherit;text-decoration:underline;text-decoration-skip-ink:auto;text-decoration-thickness:1.5px;text-underline-offset:1.5px}
+ul{padding-left:1.5rem;margin:1rem 0}li{margin:.4rem 0}
+strong{font-weight:700}
+details{margin:12px 0;border:1.5px solid rgb(100,100,98);border-radius:8px;padding:6px 12px}
+details summary{cursor:pointer;font-weight:500;font-size:1rem;padding:6px 0;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details>div{padding:8px 0 4px;font-family:-apple-system,system-ui,sans-serif;font-size:.95rem;line-height:1.7;color:#444}
+details>div p{font-size:.95rem;line-height:1.7;margin:.6em 0;font-family:-apple-system,system-ui,sans-serif}
+.profile{display:flex;gap:24px;margin:2rem 0;align-items:flex-start}
+.profile-img{width:120px;height:120px;border-radius:50%;background:#ddd;flex-shrink:0;overflow:hidden;border:3px solid var(--accent)}
+.profile-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.profile-text{flex:1}
+.profile-text .name{font-size:1.6rem;font-weight:700;margin-bottom:.3rem}
+.profile-text .role{font-family:-apple-system,system-ui,sans-serif;font-size:.9rem;color:var(--dull-foreground);margin-bottom:.8rem}
+.profile-text p{font-size:1.2rem;line-height:1.8;margin:.6rem 0}
+.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:2rem 0}
+@media(max-width:640px){.model-grid{grid-template-columns:1fr}}
+.model-card{border:1.5px solid #000;border-radius:8px;padding:20px;text-align:center}
+.model-card .m-name{font-family:'Courier New',monospace;font-size:1rem;font-weight:700;margin-bottom:6px}
+.model-card .m-co{font-family:-apple-system,system-ui,sans-serif;font-size:.8rem;color:var(--dull-foreground);margin-bottom:8px}
+.model-card .m-role{font-family:-apple-system,system-ui,sans-serif;font-size:.82rem;line-height:1.5;color:#444}
+.tab-boxes{margin:2rem 0}
+.tab-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.tab-btn{padding:4px 8px;font-family:'EB Garamond',Georgia,serif;border:1.5px solid #000;border-radius:6px;font-size:1.2rem;background:none;cursor:pointer;color:#111}
+.tab-btn:hover{background:rgba(0,0,0,.04)}.tab-btn.active{background:#111;color:var(--vivid-background)}
+.tab-panel{padding:8px 0;font-family:-apple-system,system-ui,sans-serif;font-size:.95rem;line-height:1.7;display:none;color:#444}
+.tab-panel.active{display:block}.tab-panel p{font-size:.95rem;line-height:1.7;margin:0 0 .8em;font-family:-apple-system,system-ui,sans-serif}
+.contact-box{border:2px solid var(--accent);border-radius:8px;padding:24px;margin:2rem 0;text-align:center}
+.contact-box a{color:var(--accent);font-weight:600}
+footer{max-width:740px;margin:0 auto;padding:40px 24px 60px;border-top:1px solid #ddd;font-family:-apple-system,system-ui,sans-serif;font-size:.8rem;color:var(--dull-foreground);display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+<h1><a href="Nov_AI_2030.html">Pre-AGI en Novartis 2030</a></h1>
+<div class="nav-links">
+<a href="Nov_AI_2030.html">Summary</a>
+<div class="nav-dropdown"><a href="Nov_AI_2030_Research.html">Research</a><div class="nav-dd-menu"><a href="Nov_AI_2030.html#methodology">Methodology</a><hr><a href="Nov_AI_2030.html#scenarios">Scenarios</a><hr><a href="Nov_AI_2030.html#results">Results</a><hr><a href="Nov_AI_2030.html#sensitivity">Sensitivity</a><hr><a href="Nov_AI_2030.html#strategy">Strategy</a></div></div>
+<a href="Nov_AI_2030_About.html" class="bd" style="font-weight:700">About</a>
+</div>
+</nav>
+
+<h1 class="page-title">About</h1>
+
+<p>Este reforecast es el primer análisis público que fusiona las proyecciones de <a href="https://ai-2027.com">AI 2027</a> con un pipeline farmacéutico real para una región específica. Fue producido por <strong>NCompany</strong>, consultora especializada en innovación corporativa e inteligencia artificial aplicada al negocio, y preparado para el Comité de Dirección de Novartis Américas.</p>
+
+<p>El trabajo fue realizado íntegramente mediante <strong>deep research asistida por los tres modelos frontera de marzo de 2026</strong>, combinados con expertise humana en pharma, regulatorio y estrategia de lanzamiento. No se usaron datasets propietarios de Novartis — toda la información proviene de fuentes públicas, informes del pipeline y la documentación regulatoria de cada agencia.</p>
+
+<!-- ══════ CONTACT ══════ -->
+<h2>Get in touch</h2>
+
+<p>Puedes contactar con Néstor en <a href="/cdn-cgi/l/email-protection#f29c9781869d80b29c919d9f82939c8bdc9781"><span class="__cf_email__" data-cfemail="107e7563647f62507e737f7d60717e693e7563">[email&#160;protected]</span></a> o en <a href="https://www.linkedin.com/in/nestorguerra/">LinkedIn</a>. Si estás interesado en un análisis similar para tu pipeline, tu región o tu portafolio terapéutico, escríbenos.</p>
+
+<p>Si quieres que NCompany ejecute un <strong>taller de scenario planning de IA aplicada a pharma</strong> con tu equipo directivo, similar a los tabletop exercises de AI 2027 pero aplicados a tu realidad de negocio, contáctanos directamente.</p>
+
+<!-- ══════ TEAM ══════ -->
+<h2>Nuestro equipo</h2>
+
+<div class="profile">
+<div class="profile-img"><img src="nestor-guerra.jpg" alt="Néstor Guerra"></div>
+<div class="profile-text">
+<div class="name">Néstor Guerra</div>
+<div class="role">CEO & Co-fundador de NCompany · Autor del reforecast</div>
+<p>Néstor Guerra es ingeniero de telecomunicaciones con Executive MBA por EOI (mejor alumno de su promoción, beca Imagine Silicon Valley). Lleva más de 18 años en consultoría de innovación corporativa, habiendo dirigido la práctica de servicios de HP/Agilent Technologies para el sur de Europa antes de fundar su propia firma.</p>
+<p>Desde 2022, dirige <strong>NCompany</strong>, consultora especializada en IA aplicada al negocio. Su cartera de clientes incluye las principales farmacéuticas globales — <strong>Roche, Novo Nordisk, Daiichi Sankyo, AstraZeneca, Bayer, Gilead, MSD, Boehringer Ingelheim, Novartis y J&J</strong> — además de banca (CaixaBank), retail (Leroy Merlin), energía (Repsol) y telecomunicaciones (Telefónica).</p>
+<p>Publica regularmente en <strong>Forbes, Harvard Deusto y Expansión</strong>. Es profesor en EOI, ISDI y Headspring/IE Business School. Speaker en TEDx y South Summit. Su caso de innovación con Novartis fue publicado por Harvard Business Review.</p>
+<p>Para este reforecast, Néstor ha combinado su expertise sectorial en pharma con deep research intensiva asistida por los tres modelos frontera, produciendo análisis que normalmente requerirían un equipo de 4-5 consultores durante 3-4 semanas.</p>
+</div>
+</div>
+
+<!-- ══════ MODELS ══════ -->
+<h2>Los tres modelos frontera</h2>
+
+<p>Este análisis fue construido en su totalidad mediante investigación profunda asistida por inteligencia artificial. Se utilizaron los tres modelos frontera disponibles en marzo de 2026, cada uno contribuyendo con capacidades complementarias:</p>
+
+<div class="model-grid">
+<div class="model-card">
+<div class="m-name">Claude Opus 4.6</div>
+<div class="m-co">Anthropic</div>
+<div class="m-role">Motor principal del análisis. Deep research del pipeline, modelado Monte Carlo, síntesis regulatoria multi-jurisdicción, construcción de la narrativa cronológica y desarrollo de los escenarios.</div>
+</div>
+<div class="model-card">
+<div class="m-name">GPT-5.4 Pro</div>
+<div class="m-co">OpenAI</div>
+<div class="m-role">Validación cruzada de proyecciones, análisis de sensibilidad, verificación de datos de pipeline contra ClinicalTrials.gov y fuentes regulatorias públicas.</div>
+</div>
+<div class="model-card">
+<div class="m-name">Gemini 3.1 Ultra Deep Think</div>
+<div class="m-co">Google DeepMind</div>
+<div class="m-role">Búsqueda y verificación de datos de acceso por país, reformas regulatorias recientes, y datos de mercado farmacéutico en América Latina.</div>
+</div>
+</div>
+
+<p>La combinación de tres modelos frontera no fue casual. Cada modelo tiene sesgos y limitaciones diferentes. Usar los tres en paralelo — y confrontar sus outputs — reduce significativamente el riesgo de alucinaciones factuales y sesgos sistemáticos. Cuando los tres coinciden en una proyección, la confianza es alta. Cuando divergen, se investiga más.</p>
+
+<details>
+<summary>Metodología de uso de los modelos</summary>
+<div>
+<p><strong>Fase 1 — Deep research:</strong> Extracción y síntesis de las proyecciones de AI 2027 (escenario, timelines, takeoff, compute, security forecasts), datos de pipeline de Novartis (Annual Report 2025, pipeline público, ClinicalTrials.gov), y fuentes regulatorias de cada agencia (Health Canada, ANVISA, COFEPRIS, INVIMA, ANMAT).</p>
+<p><strong>Fase 2 — Modelado:</strong> Construcción del modelo Monte Carlo de 20.000 iteraciones × 11 activos × 10 clusters país × 4 escenarios. Calibración contra tasas BIO 2011-2020 y datos METR de time-horizon tasks.</p>
+<p><strong>Fase 3 — Escenarios narrativos:</strong> Desarrollo de las dos narrativas cronológicas (Controlled Acceleration y Fast Takeoff), cruzando proyecciones cuantitativas con la dinámica real de filing, revisión, aprobación y acceso en cada mercado.</p>
+<p><strong>Fase 4 — Validación cruzada:</strong> Cada output principal fue verificado por al menos dos de los tres modelos. Las discrepancias se documentaron y resolvieron manualmente.</p>
+</div>
+</details>
+
+<!-- ══════ SOURCES ══════ -->
+<h2>Fuentes</h2>
+
+<p>Todo el análisis se basa en fuentes públicas. No se utilizaron datos propietarios o confidenciales de Novartis ni de ninguna otra compañía.</p>
+
+<div class="tab-boxes">
+<div class="tab-buttons">
+<button class="tab-btn active" onclick="T(0)">AI 2027</button>
+<button class="tab-btn" onclick="T(1)">Pipeline</button>
+<button class="tab-btn" onclick="T(2)">Regulatorias</button>
+<button class="tab-btn" onclick="T(3)">Benchmarks</button>
+</div>
+<div class="tab-panel active" id="tp0">
+<p><strong>AI-1</strong> AI 2027 — Scenario narrative (Kokotajlo, Alexander, Larsen, Lifland, Dean, abril 2025).</p>
+<p><strong>AI-2</strong> AI 2027 — Compute Forecast (Dean, abril 2025).</p>
+<p><strong>AI-3</strong> AI 2027 — Timelines Forecast (Kokotajlo, Lifland, abril 2025).</p>
+<p><strong>AI-4</strong> AI 2027 — Takeoff Forecast (Kokotajlo, Lifland, abril 2025).</p>
+<p><strong>AI-5</strong> AI 2027 — Security Forecast (Dean, abril 2025).</p>
+<p><strong>AI-6</strong> AI 2027 — AI Goals Forecast (Kokotajlo, abril 2025).</p>
+<p><strong>AI-7</strong> AI 2027 — Self-grading update (febrero 2026, ~65% on pace).</p>
+<p><strong>AI-8</strong> AI Futures Model (aifuturesmodel.com, diciembre 2025).</p>
+</div>
+<div class="tab-panel" id="tp1">
+<p><strong>NV-1</strong> Novartis Annual Report 2025 (febrero 2026).</p>
+<p><strong>NV-2</strong> Novartis Pipeline público (novartis.com/pipeline).</p>
+<p><strong>NV-3</strong> ClinicalTrials.gov — registros NCT para los 11 activos modelados.</p>
+<p><strong>USER-1</strong> "Estado del pipeline de Novartis en América sin Estados Unidos" — informe generado por modelos frontera.</p>
+<p><strong>USER-2</strong> "Pipeline Novartis América ex-US: Análisis regulatorio-comercial 2025-2030" — informe generado por modelos frontera.</p>
+<p><strong>USER-3</strong> "Análisis Estratégico y Proyección del Pipeline de Novartis en la Región de las Américas" — informe generado por modelos frontera.</p>
+</div>
+<div class="tab-panel" id="tp2">
+<p><strong>REG-1</strong> Health Canada Drug Product Database (DPD).</p>
+<p><strong>REG-2</strong> ANVISA — RDC 945/2024 + GlobalSubmit eCTD 4.0 (noviembre 2025).</p>
+<p><strong>REG-3</strong> COFEPRIS — Reliance Pathway (julio 2025, reconocimiento FDA/EMA).</p>
+<p><strong>REG-4</strong> INVIMA — Células especializadas + audiencias virtuales (marzo 2025).</p>
+<p><strong>REG-5</strong> ANMAT — Disposición 6223/2025 (trazabilidad IFAs alto riesgo).</p>
+</div>
+<div class="tab-panel" id="tp3">
+<p><strong>BIO-1</strong> BIO Clinical Development Success Rates 2011-2020 — tasas base por fase y área terapéutica.</p>
+<p><strong>METR-1</strong> METR Time-Horizon Task Completion Data (2024-2025).</p>
+<p><strong>METR-2</strong> METR Developer Productivity RCT (2025) — 19% slowdown con herramientas 2025.</p>
+<p><strong>METR-3</strong> METR Uplift Assessment Update (febrero 2026).</p>
+<p><strong>RB-1</strong> RE-Bench — AI Research Engineering Benchmark.</p>
+</div>
+</div>
+
+<!-- ══════ EXPERTISE ══════ -->
+<h2>Sobre NCompany</h2>
+
+<p>NCompany es una consultora boutique fundada en 2022, especializada en <strong>formación ejecutiva e innovación corporativa con IA</strong>. El 70% de sus clientes son compañías farmacéuticas globales. Los servicios incluyen:</p>
+
+<ul>
+<li><strong>Ponencias y keynotes</strong> sobre IA aplicada al negocio (TEDx, South Summit, congresos sectoriales)</li>
+<li><strong>Talleres prácticos de IA</strong> para equipos directivos — desde C-Suite hasta equipos funcionales de Medical, Regulatory, Market Access y Commercial</li>
+<li><strong>Programas de acompañamiento</strong> para la integración de IA en workflows específicos de pharma: medical writing, evidence generation, dossier assembly, HTA preparation</li>
+<li><strong>Scenario planning y war games</strong> de impacto de IA en el sector salud — similar a los tabletop exercises de AI 2027 pero aplicados a realidades de negocio específicas</li>
+</ul>
+
+<details>
+<summary>Clientes y reconocimientos</summary>
+<div>
+<p><strong>Pharma:</strong> Roche, Novo Nordisk, Daiichi Sankyo, AstraZeneca, Bayer, Gilead, MSD, Boehringer Ingelheim, Novartis, J&J, Sandoz, Astellas, Ferrer.</p>
+<p><strong>Otros sectores:</strong> CaixaBank, Leroy Merlin, Repsol, Telefónica, Deloitte, Unicaja, KPMG.</p>
+<p><strong>Docencia:</strong> EOI, ISDI, Headspring/IE Business School.</p>
+<p><strong>Publicaciones:</strong> Forbes España, Harvard Deusto Business Review, Expansión.</p>
+<p><strong>Reconocimientos:</strong> Mejor Profesor EOI, caso Novartis en Harvard Business Review, becas Harvard Business School y Babson College.</p>
+</div>
+</details>
+
+<div class="contact-box">
+<p style="font-size:1.4rem;margin:0 0 .5rem"><strong>¿Quieres un análisis similar para tu compañía?</strong></p>
+<p style="font-size:1.1rem;margin:0"><a href="/cdn-cgi/l/email-protection#127c7761667d60527c717d7f62737c6b3c7761"><span class="__cf_email__" data-cfemail="711f1402051e03311f121e1c01101f085f1402">[email&
